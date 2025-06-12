@@ -75,7 +75,7 @@ export default function HomePage(){
 
                     {/* Started Button */}
                     <Link
-                    to="#"
+                    to="/pricing"
                     className="ml-6 px-4 py-2 bg-white text-indigo-800 font-semibold rounded-lg shadow hover:bg-yellow-400 hover:text-white transition custom-button"
                     >
                     Started
