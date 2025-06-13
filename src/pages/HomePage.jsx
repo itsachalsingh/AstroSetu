@@ -5,7 +5,7 @@ const tabData = [
   {
     title: 'Tarot',
     key: 'tarot',
-    image: '/assets/images/tarot.png',
+    image: '../assets/images/tarot.png',
     slug:'/tarot-card',
     content: (
       <>
@@ -24,7 +24,7 @@ const tabData = [
   {
     title: 'Chaldean Numerology',
     key: 'chaldennumerology',
-    image: '/assets/vedic.png',
+    image: '../assets/images/chaldennumerology.webp',
     slug:'/numerology',
     content: (
       <>
@@ -43,7 +43,7 @@ const tabData = [
   {
     title: 'Cosmic Lifestyle',
     key: 'cosmiclifestyle',
-    image: '/assets/horoscope.png',
+    image: '../assets/images/cosmiclifestyle.webp',
     slug:'/#',
     content: (
       <>
@@ -62,7 +62,7 @@ const tabData = [
   {
     title: 'Indian Festival',
     key: 'indianfestival',
-    image: '/assets/pdf.png',
+    image: '../assets/images/indianfestival.webp',
     slug:'/#',
     content: (
       <>
