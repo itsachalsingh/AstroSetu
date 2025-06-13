@@ -5,7 +5,7 @@ const tabData = [
   {
     title: 'Tarot',
     key: 'tarot',
-    image: '/assets/tarot.png',
+    image: '/assets/images/tarot.png',
     slug:'/tarot-card',
     content: (
       <>
