@@ -1,26 +1,62 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { FaUser, FaEnvelope, FaLock, FaGoogle, FaGithub } from 'react-icons/fa';
+import { FaUser, FaEnvelope, FaPhone, FaLock } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 
 export default function SignUp() {
   const [form, setForm] = useState({ name: '', email: '', password: '', agree: false });
   const [submitted, setSubmitted] = useState(false);
 
+  const fields = [
+    { name: 'fname', icon: <FaUser className="text-indigo-400 mr-3" /> },
+    { name: 'lname', icon: <FaUser className="text-indigo-400 mr-3" /> },
+    { name: 'email', icon: <FaEnvelope className="text-indigo-400 mr-3" /> },
+    { name: 'mobile_no', icon: <FaPhone className="text-indigo-400 mr-3" /> },
+    { name: 'password', icon: <FaLock className="text-indigo-400 mr-3" /> }
+  ];
+
   const handleChange = e => {
     const { name, value, type, checked } = e.target;
     setForm(prev => ({ ...prev, [name]: type === 'checkbox' ? checked : value }));
   };
 
-  const handleSubmit = async e => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!form.agree) return alert('Please agree to terms.');
+
     try {
-      const response = await fetch('/api/signup', {
+      // 1. Get client IP
+      const ipResponse = await fetch('https://api.ipify.org?format=json');
+      const ipData = await ipResponse.json();
+      const clientIp = ipData.ip;
+
+      const plan = JSON.parse(localStorage.getItem("selectedPlan"));
+
+      // 2. Get location from IP (you can use ipapi.co, ipinfo.io, or similar)
+      const locationResponse = await fetch(`https://ipapi.co/${clientIp}/json/`);
+      const locationData = await locationResponse.json();
+
+      // 3. Append extra data to form
+      const fullForm = {
+        ...form,
+        address: locationData?.org || '151 A',
+        city: locationData?.city || 'Chandigarh',
+        state: locationData?.region || 'Chandigarh',
+        country: locationData?.country_name || 'India',
+        postal_code: locationData?.postal || '160002',
+        authorized_website: window.location.hostname,
+        source_ip: clientIp,
+        client_ip: clientIp,
+        request_api_id: plan,
+      };
+
+      // 4. Send data to server
+      const response = await fetch('http://localhost:4000/api/auth/register', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(form),
+        body: JSON.stringify(fullForm),
       });
+
       const data = await response.json();
       if (data.success) setSubmitted(true);
       else alert(data.message || 'Signup failed.');
@@ -76,20 +112,21 @@ export default function SignUp() {
         
 
           {/* Input Fields */}
-          {['name', 'email', 'password'].map((field, idx) => (
-            <div key={field} className="flex items-center border border-indigo-200 rounded-lg px-4 py-2 focus-within:ring-2 focus-within:ring-indigo-400 transition">
-              {idx === 0 && <FaUser className="text-indigo-400 mr-3" />}
-              {idx === 1 && <FaEnvelope className="text-indigo-400 mr-3" />}
-              {idx === 2 && <FaLock className="text-indigo-400 mr-3" />}
+          {fields.map(({ name, icon }) => (
+            <div
+              key={name}
+              className="flex items-center border border-indigo-200 rounded-lg px-4 py-2 focus-within:ring-2 focus-within:ring-indigo-400 transition"
+            >
+              {icon}
               <input
-                type={field === 'email' ? 'email' : field === 'password' ? 'password' : 'text'}
-                name={field}
-                placeholder={field.charAt(0).toUpperCase() + field.slice(1)}
+                type={name === 'email' ? 'email' : name === 'password' ? 'password' : 'text'}
+                name={name}
+                placeholder={name.charAt(0).toUpperCase() + name.slice(1)}
                 className="bg-transparent outline-none text-indigo-900 w-full placeholder-indigo-400"
-                value={form[field]}
+                value={form[name]}
                 onChange={handleChange}
                 required
-                autoComplete={field === 'password' ? 'new-password' : undefined}
+                autoComplete={name === 'password' ? 'new-password' : undefined}
               />
             </div>
           ))}

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import '../assets/css/UnifiedPricing.css';
+import { useNavigate } from 'react-router-dom';
 
 const plans = [
   {
@@ -8,6 +9,7 @@ const plans = [
     inrprice: 1000,
     chineseprice: 50,
     braprice: 50,
+    package_id:1,
     discription: 'Comprehensive daily, weekly, monthly, and yearly horoscopes including Vedic, Western, Chinese, and Numerology systems.',
     features: [
       'Access to Vedic, Western, Chinese, and Numerology horoscopes.',
@@ -24,6 +26,7 @@ const plans = [
     inrprice: 1000,
     chineseprice: 50,
     braprice: 50,
+    package_id:2,
     discription: 'Accurate daily Tarot card readings with spiritual and intuitive guidance for decision making and emotional clarity.',
     features: [
       'Draw daily Tarot cards for love, career, and finance.',
@@ -40,6 +43,7 @@ const plans = [
     inrprice: 1000,
     chineseprice: 50,
     braprice: 50,
+    package_id:3,
     discription: 'Daily Panchang based on Vedic Astrology with sunrise, tithi, nakshatra, yoga, karana, and muhurta.',
     features: [
       'Daily Panchang with sunrise and sunset timings.',
@@ -56,6 +60,7 @@ const plans = [
     inrprice: 1000,
     chineseprice: 50,
     braprice: 50,
+    package_id:4,
     discription: 'Detailed Vedic Kundali generation including birth chart, planetary positions, doshas, and remedies.',
     features: [
       'Complete Vedic birth chart generation (Lagna, Moon).',
@@ -72,6 +77,7 @@ const plans = [
     inrprice: 1000,
     chineseprice: 50,
     braprice: 50,
+    package_id:5,
     discription: 'Ashta-Koota based Vedic compatibility check for marriage and relationships with dosha analysis.',
     features: [
       'Ashta-Koota compatibility score.',
@@ -88,6 +94,7 @@ const plans = [
     inrprice: 1000,
     chineseprice: 50,
     braprice: 50,
+    package_id:6,
     discription: 'Personalized natal chart analysis showing planetary alignment at birth with insights for life path and personality.',
     features: [
       'Complete birth chart with 12 house analysis.',
@@ -104,6 +111,7 @@ const plans = [
     inrprice: 1000,
     chineseprice: 50,
     braprice: 50,
+    package_id:7,
     discription: 'Western astrology-based predictions using Sun, Moon, and Rising signs with planetary transits and aspects.',
     features: [
       'Sun, Moon, and Ascendant sign interpretation.',
@@ -120,6 +128,7 @@ const plans = [
     inrprice: 1000,
     chineseprice: 50,
     braprice: 50,
+    package_id:8,
     discription: 'Traditional Indian astrology predictions using Vedic principles, including Lagna, Dashas, and Nakshatras.',
     features: [
       'Lagna-based analysis with Navamsa and divisional charts.',
@@ -135,6 +144,7 @@ const plans = [
     price: 10,
     inrprice: 1000,
     chineseprice: 50,
+    package_id:9,
     braprice: 50,
     discription: 'Traditional Indian astrology predictions using Vedic principles, including Lagna, Dashas, and Nakshatras.',
     features: [
@@ -179,6 +189,17 @@ export default function PricingPage() {
     }
   };
 
+  const navigate = useNavigate();
+
+  const signup = (packageId) => {
+   
+    console.log("Signing up for package:", packageId);
+    localStorage.setItem("selectedPlan", JSON.stringify(packageId));
+     navigate('/signup');
+
+    // Add your actual signup logic here (API call, routing, etc.)
+  };
+  
   const getCurrencyLabel = () => {
     switch (currency) {
       case 'inr': return 'INR';
@@ -216,7 +237,7 @@ export default function PricingPage() {
                   <li key={i}>{feature}</li>
                 ))}
               </ul>
-              <button style={{ backgroundColor: plan.color }} className="cta-btn">Start Free Trial</button>
+              <button style={{ backgroundColor: plan.color }} className="cta-btn" onClick={() => signup(plan.package_id)}>Start Free Trial</button>
             </div>
           ))}
         </div>

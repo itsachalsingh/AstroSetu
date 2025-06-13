@@ -16,13 +16,13 @@ export default function SignIn() {
     e.preventDefault();
     setLoading(true);
     try {
-      const res = await fetch('/api/signin', {
+      const res = await fetch('http://localhost:4000/api/auth/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(form),
       });
       const data = await res.json();
-      if (data.success) {
+      if (data) {
         // Redirect or show success message
         alert('Signed in successfully!');
       } else {
