@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 
 const tabData = [
   {
@@ -41,13 +42,13 @@ const tabData = [
     button: 'Try Chaldean Numerology API',
   },
   {
-    title: 'Cosmic Lifestyle',
-    key: 'cosmiclifestyle',
+    title: 'Astrological Living',
+    key: 'astrologicalliving',
     image: '../assets/images/cosmiclifestyle.webp',
-    slug:'/#',
+    slug:'/lifestyle',
     content: (
       <>
-        <h2 className="text-3xl font-bold mb-4">Cosmic Lifestyle Horoscope API</h2>
+        <h2 className="text-3xl font-bold mb-4">Astrological Living Horoscope API</h2>
         <p className="mb-3">
           Align your audience with cosmic rhythms using daily, weekly, and monthly horoscopes tailored to love, finance, health, and personal growth.
         </p>
@@ -63,7 +64,7 @@ const tabData = [
     title: 'Indian Festival',
     key: 'indianfestival',
     image: '../assets/images/indianfestival.webp',
-    slug:'/#',
+    slug:'/festival',
     content: (
       <>
         <h2 className="text-3xl font-bold mb-4">Indian Festival & Panchang API</h2>
@@ -89,6 +90,16 @@ export default function HomePage() {
   return (
 
     <>
+
+    <Helmet>
+        <title>AstroSetu - Accurate Online Kundli & Daily Horoscopes</title>
+        <meta name="description" content="Get free Vedic astrology, daily horoscopes, kundli, and personalized predictions with AstroSetu's advanced AI engine." />
+        <meta
+          name="keywords"
+          content="kundli matching, matchmaking API, dating compatibility, manglik dosha, vedic love astrology, matrimonial kundli"
+        />
+        <link rel="canonical" href="/" />
+    </Helmet>
      <div className="bg-customBg flex items-center justify-center p-4 sm:p-8">
       {/* Card Container */}
       <div className="max-w-7xl w-full mx-auto overflow-hidden">
@@ -202,7 +213,7 @@ export default function HomePage() {
             <div className="grid md:grid-cols-2 gap-8 items-center">
               <div className="text-gray-800">{currentTab.content}</div>
               <div>
-                <img src={currentTab.image} alt={currentTab.title} className="w-full rounded-xl" />
+                <img src={currentTab.image} alt={currentTab.title} className="w-80 rounded-xl m-auto" />
               </div>
             </div>
 
@@ -240,7 +251,7 @@ export default function HomePage() {
         {/* Image */}
         <div className="flex justify-center">
           <img 
-            src="../assets/images/horoscope.html"
+            src="../assets/images/horoscope.webp"
             alt="Astrology API - Horoscope, Chinese Zodiac, Numerology" 
             className="w-80 h-auto rounded-2xl shadow-xl"
           />
@@ -415,7 +426,7 @@ export default function HomePage() {
         {/* Image Block */}
         <div className="flex justify-center md:justify-end">
           <img
-            src="../assets/images/kundli.webp"
+            src="../assets/images/kundali.webp"
             alt="Kundli API Illustration"
             className="w-[320px] h-auto rounded-xl shadow-xl"
           />
