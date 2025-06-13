@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Tabs, Tab } from "@mui/material";
+import { Link } from 'react-router-dom';
 
 const zodiacSigns = [
   { name: "Aries", icon: "♈", date: "Mar 21 - Apr 19" },
@@ -34,19 +35,19 @@ const chineseZodiacs = [
 // Enhanced FAQ data with SEO-rich content
 const faqs = [
   {
-    q: "What is AstroAPIHub and how does it work?",
-    a: "AstroAPIHub is a comprehensive astrology API platform providing accurate daily horoscopes, Chinese zodiac predictions, numeroscope insights, and Panchang data. Our RESTful API delivers JSON responses that developers can easily integrate into websites, mobile apps, and digital platforms to offer personalized astrological content to users."
+    q: "What is AstroSetuAPI and how does it work?",
+    a: "AstroSetuAPI is a comprehensive astrology API platform providing accurate daily horoscopes, Chinese zodiac predictions, numeroscope insights, and Panchang data. Our RESTful API delivers JSON responses that developers can easily integrate into websites, mobile apps, and digital platforms to offer personalized astrological content to users."
   },
   {
     q: "How accurate are your horoscope predictions?",
     a: "Our predictions are generated using time-tested astrological calculations combined with modern algorithms. We source data from reputable astrological databases and update our predictions daily based on planetary movements. While astrology is interpretive by nature, we strive for consistency and relevance in all our readings."
   },
   {
-    q: "What makes AstroAPIHub better than other astrology APIs?",
-    a: "AstroAPIHub stands out with its all-in-one solution (Western, Chinese, Numerology, and Panchang), developer-friendly documentation, 99.9% uptime, and affordable pricing. Our API responses are optimized for speed (average 200ms response time) and we offer more detailed predictions than competitors."
+    q: "What makes AstroSetuAPI better than other astrology APIs?",
+    a: "AstroSetuAPI stands out with its all-in-one solution (Western, Chinese, Numerology, and Panchang), developer-friendly documentation, 99.9% uptime, and affordable pricing. Our API responses are optimized for speed (average 200ms response time) and we offer more detailed predictions than competitors."
   },
   {
-    q: "Can I use AstroAPIHub for commercial applications?",
+    q: "Can I use AstroSetuAPI for commercial applications?",
     a: "Absolutely! Many businesses use our API to power astrology features in their apps, websites, and digital products. Our Business plan includes commercial rights and white-label options. Check our pricing page for details on commercial usage limits."
   },
   {
@@ -92,7 +93,7 @@ export default function AstroLandingPage() {
   const [selectedChinese, setSelectedChinese] = useState(chineseZodiacs[0]);
   const [dob, setDob] = useState("");
   const [faqOpenIndex, setFaqOpenIndex] = useState(null);
-  const [email, setEmail] = useState("");
+
 
   // Numerology calculation
   const calculateLifePathNumber = (dob) => {
@@ -186,13 +187,12 @@ export default function AstroLandingPage() {
           <div className="hidden md:flex space-x-8">
             <a href="#features" className="font-medium hover:text-purple-600">Features</a>
             <a href="#demo" className="font-medium hover:text-purple-600">Demo</a>
-            <a href="/pricing" className="font-medium hover:text-purple-600">Pricing</a>
             <a href="#faq" className="font-medium hover:text-purple-600">FAQ</a>
           </div>
           <div className="flex items-center space-x-4">
-            <a href="/pricing" className="hidden md:inline-block bg-purple-600 hover:bg-purple-700 text-white font-medium px-5 py-2 rounded-lg transition">
+            <Link to="/pricing" className="hidden md:inline-block bg-purple-600 hover:bg-purple-700 text-white font-medium px-5 py-2 rounded-lg transition">
               Get API Key
-            </a>
+            </Link>
           </div>
         </div>
       </nav>
@@ -207,12 +207,12 @@ export default function AstroLandingPage() {
             Integrate accurate daily horoscopes, Chinese zodiac predictions, numerology insights, and Panchang data into your apps and websites with our developer-friendly API.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <a href="#pricing" className="inline-block bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white font-semibold px-8 py-4 rounded-lg shadow-lg transition transform hover:-translate-y-1">
+            <Link to="/pricing" className="inline-block bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white font-semibold px-8 py-4 rounded-lg shadow-lg transition transform hover:-translate-y-1">
               Get Started - Free Trial
-            </a>
-            <a href="#demo" className="inline-block bg-white hover:bg-gray-100 text-gray-800 font-semibold px-8 py-4 rounded-lg shadow-md border border-gray-200 transition transform hover:-translate-y-1">
+            </Link>
+            <Link href="#demo" className="inline-block bg-white hover:bg-gray-100 text-gray-800 font-semibold px-8 py-4 rounded-lg shadow-md border border-gray-200 transition transform hover:-translate-y-1">
               Live Demo
-            </a>
+            </Link>
           </div>
         </div>
         <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
@@ -799,7 +799,7 @@ export default function AstroLandingPage() {
           <div className="text-center mb-16">
             <h2 className="text-4xl font-extrabold mb-4">Simple Integration Process</h2>
             <p className="text-xl text-purple-200 max-w-3xl mx-auto">
-              Get started with AstroAPIHub in just a few minutes
+              Get started with AstroSetuAPI in just a few minutes
             </p>
           </div>
           <div className="grid md:grid-cols-3 gap-10 text-left">
@@ -832,72 +832,14 @@ export default function AstroLandingPage() {
             </div>
           </div>
           <div className="mt-16 text-center">
-            <a href="#pricing" className="inline-block bg-white hover:bg-gray-100 text-purple-900 font-semibold px-8 py-4 rounded-lg shadow-lg transition transform hover:-translate-y-1">
+            <Link href="/pricing" className="inline-block bg-white hover:bg-gray-100 text-purple-900 font-semibold px-8 py-4 rounded-lg shadow-lg transition transform hover:-translate-y-1">
               View Pricing Plans
-            </a>
+            </Link>
           </div>
         </div>
       </section>
 
-      {/* Pricing Section */}
-      <section id="pricing" className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-extrabold mb-4">Simple, Transparent Pricing</h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Choose the plan that fits your needs. Scale up anytime.
-            </p>
-          </div>
-          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            <PricingCard
-              title="Starter"
-              price="0"
-              features={[
-                "100 API calls/day",
-                "Western & Chinese Zodiac",
-                "Basic Numeroscope",
-                "Email Support",
-                "Community Forum Access"
-              ]}
-              cta="Get Started for Free"
-            />
-            <PricingCard
-              title="Professional"
-              price="29"
-              features={[
-                "10,000 API calls/day",
-                "All Zodiac types & Numeroscope",
-                "Advanced Panchang Data",
-                "Priority Email Support",
-                "Webhooks Support",
-                "Basic Analytics"
-              ]}
-              popular
-              cta="Start 7-Day Free Trial"
-            />
-            <PricingCard
-              title="Business"
-              price="99"
-              features={[
-                "Unlimited API calls",
-                "All Astrology Features",
-                "Dedicated Support",
-                "Custom Integrations",
-                "Advanced Analytics",
-                "99.9% Uptime SLA",
-                "White-label Options"
-              ]}
-              cta="Contact Sales"
-            />
-          </div>
-          <div className="mt-12 text-center">
-            <p className="text-gray-600 mb-4">Need something custom?</p>
-            <a href="#" className="text-purple-600 font-semibold hover:text-purple-800">
-              Contact us for enterprise solutions →
-            </a>
-          </div>
-        </div>
-      </section>
+      
 
       {/* Testimonials Section */}
       <section className="bg-gray-50 py-20">
@@ -905,7 +847,7 @@ export default function AstroLandingPage() {
           <div className="text-center mb-16">
             <h2 className="text-4xl font-extrabold mb-4">Trusted by Developers Worldwide</h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Here's what our customers say about AstroAPIHub
+              Here's what our customers say about AstroSetuAPI
             </p>
           </div>
           <div className="grid md:grid-cols-3 gap-8">
@@ -919,7 +861,7 @@ export default function AstroLandingPage() {
               </div>
               <div className="text-yellow-500 mb-3">★★★★★</div>
               <p className="text-gray-700">
-                "We switched to AstroAPIHub after struggling with unreliable predictions from another provider. The accuracy and speed are exceptional, and our user engagement increased by 40% after the switch."
+                "We switched to AstroSetuAPI after struggling with unreliable predictions from another provider. The accuracy and speed are exceptional, and our user engagement increased by 40% after the switch."
               </p>
             </div>
             <div className="bg-white p-8 rounded-xl shadow-md border border-gray-200">
@@ -958,7 +900,7 @@ export default function AstroLandingPage() {
           <div className="text-center mb-16">
             <h2 className="text-4xl font-extrabold mb-4">Powerful Use Cases</h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Discover how AstroAPIHub can enhance your application
+              Discover how AstroSetuAPI can enhance your application
             </p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -1037,7 +979,7 @@ export default function AstroLandingPage() {
         <div className="text-center mb-16">
           <h2 className="text-4xl font-extrabold mb-4">Frequently Asked Questions</h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Everything you need to know about AstroAPIHub
+            Everything you need to know about AstroSetuAPI
           </p>
         </div>
         <div className="space-y-4">
@@ -1067,9 +1009,9 @@ export default function AstroLandingPage() {
         </div>
         <div className="mt-12 text-center">
           <p className="text-gray-600 mb-4">Still have questions?</p>
-          <a href="#" className="text-purple-600 font-semibold hover:text-purple-800">
+          <Link href="#" className="text-purple-600 font-semibold hover:text-purple-800">
             Contact our support team →
-          </a>
+          </Link>
         </div>
       </section>
 
@@ -1078,116 +1020,18 @@ export default function AstroLandingPage() {
         <div className="max-w-4xl mx-auto px-6 text-center">
           <h2 className="text-4xl font-extrabold mb-6">Ready to Integrate Astrology into Your App?</h2>
           <p className="text-xl text-purple-100 mb-8">
-            Join thousands of developers using AstroAPIHub to deliver engaging astrology content to their users.
+            Join thousands of developers using AstroSetuAPI to deliver engaging astrology content to their users.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <a href="#pricing" className="inline-block bg-white hover:bg-gray-100 text-purple-700 font-semibold px-8 py-4 rounded-lg shadow-lg transition transform hover:-translate-y-1">
+            <Link to="/pricing" className="inline-block bg-white hover:bg-gray-100 text-purple-700 font-semibold px-8 py-4 rounded-lg shadow-lg transition transform hover:-translate-y-1">
               Get Started for Free
-            </a>
-            <a href="#demo" className="inline-block bg-transparent hover:bg-purple-700 text-white font-semibold px-8 py-4 rounded-lg border-2 border-white transition transform hover:-translate-y-1">
+            </Link>
+            <Link ti="#demo" className="inline-block bg-transparent hover:bg-purple-700 text-white font-semibold px-8 py-4 rounded-lg border-2 border-white transition transform hover:-translate-y-1">
               Try Live Demo
-            </a>
+            </Link>
           </div>
         </div>
       </section>
-
-      {/* Newsletter Section */}
-      <section className="py-16 bg-white">
-        <div className="max-w-4xl mx-auto px-6 text-center">
-          <div className="bg-gradient-to-br from-purple-50 to-indigo-50 rounded-xl p-8 md:p-12 shadow-sm border border-gray-200">
-            <h2 className="text-3xl font-extrabold mb-4">Stay Updated</h2>
-            <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
-              Subscribe to our newsletter for API updates, astrology insights, and special offers.
-            </p>
-            <form className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
-              <input
-                type="email"
-                value={email}
-                onChange={e => setEmail(e.target.value)}
-                placeholder="Your email address"
-                className="flex-1 px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
-                required
-              />
-              <button 
-                type="submit"
-                className="bg-purple-600 hover:bg-purple-700 text-white font-semibold px-6 py-3 rounded-lg transition"
-              >
-                Subscribe
-              </button>
-            </form>
-            <p className="text-xs text-gray-500 mt-4">
-              We respect your privacy. Unsubscribe at any time.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Footer */}
-      <footer className="bg-gray-900 text-gray-400 py-12">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid md:grid-cols-4 gap-8">
-            <div>
-              <div className="flex items-center space-x-2 mb-4">
-                <div className="w-8 h-8 rounded-full bg-purple-600 flex items-center justify-center text-white font-bold">A</div>
-                <span className="text-xl font-bold text-white">AstroAPIHub</span>
-              </div>
-              <p className="mb-4">
-                The most reliable astrology API for developers. Power your apps with accurate daily predictions.
-              </p>
-              <div className="flex space-x-4">
-                <a href="#" className="text-gray-400 hover:text-white">
-                  <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"></path>
-                  </svg>
-                </a>
-                <a href="#" className="text-gray-400 hover:text-white">
-                  <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                    <path fillRule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z" clipRule="evenodd"></path>
-                  </svg>
-                </a>
-                <a href="#" className="text-gray-400 hover:text-white">
-                  <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                    <path fillRule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clipRule="evenodd"></path>
-                  </svg>
-                </a>
-              </div>
-            </div>
-            <div>
-              <h3 className="text-white font-semibold mb-4">Product</h3>
-              <ul className="space-y-2">
-                <li><a href="#features" className="hover:text-white transition">Features</a></li>
-                <li><a href="#pricing" className="hover:text-white transition">Pricing</a></li>
-                <li><a href="#demo" className="hover:text-white transition">Demo</a></li>
-                <li><a href="#" className="hover:text-white transition">Documentation</a></li>
-                <li><a href="#" className="hover:text-white transition">Changelog</a></li>
-              </ul>
-            </div>
-            <div>
-              <h3 className="text-white font-semibold mb-4">Company</h3>
-              <ul className="space-y-2">
-                <li><a href="#" className="hover:text-white transition">About Us</a></li>
-                <li><a href="#" className="hover:text-white transition">Careers</a></li>
-                <li><a href="#" className="hover:text-white transition">Privacy Policy</a></li>
-                <li><a href="#" className="hover:text-white transition">Terms of Service</a></li>
-                <li><a href="#" className="hover:text-white transition">Contact Us</a></li>
-              </ul>
-            </div>
-            <div>
-              <h3 className="text-white font-semibold mb-4">Resources</h3>
-              <ul className="space-y-2">
-                <li><a href="#" className="hover:text-white transition">Blog</a></li>
-                <li><a href="#" className="hover:text-white transition">Help Center</a></li>
-                <li><a href="#" className="hover:text-white transition">Tutorials</a></li>
-                <li><a href="#" className="hover:text-white transition">API Status</a></li>
-                <li><a href="#" className="hover:text-white transition">Community</a></li>
-              </ul>
-            </div>
-          </div>
-          <div className="border-t border-gray-800 mt-12 pt-8 text-sm text-center">
-            <p>© {new Date().getFullYear()} AstroAPIHub. All rights reserved.</p>
-          </div>
-        </div>
-      </footer>
     </div>
   );
 }
