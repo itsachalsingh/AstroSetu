@@ -61,7 +61,7 @@ export default function HomePage(){
                     
                     {/* Logo */}
                     <div className="flex items-center gap-2 text-xl font-bold text-white">
-                        <img src="../assets/images/logo.png" />
+                        <img className="w-80" src="../assets/images/logo.png" />
                     </div>
 
                     {/* Navigation Links */}

@@ -1,6 +1,6 @@
 header {
     padding: 15px 35px;
-    background: #312c7a;
+    background: #ADD8E6;
     color: #fff;
     width: 100%;
 }
@@ -16,8 +16,9 @@ header {
     background: #fff;
     text-transform: uppercase;
     border-radius: 15px;
+    color: 	#0B4D91;
 }
 
 .bg-customBg{
-     background: #312c7a;
+     background: #ADD8E6;
 }
