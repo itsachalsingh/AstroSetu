@@ -177,25 +177,7 @@ export default function AstroLandingPage() {
 
   return (
     <div className="font-sans text-gray-900 bg-gradient-to-br from-white to-indigo-50 min-h-screen">
-      {/* Navigation */}
-      <nav className="bg-white shadow-sm sticky top-0 z-50">
-        <div className="max-w-8xl mx-auto px-6 py-4 flex justify-between items-center">
-          <div className="flex items-center space-x-2">
-            <div className="w-10 h-10 rounded-full bg-purple-600 flex items-center justify-center text-white font-bold text-xl">H</div>
-            <span className="text-xl font-bold text-gray-800">Horoscope</span>
-          </div>
-          <div className="hidden md:flex space-x-8">
-            <a href="#features" className="font-medium hover:text-purple-600">Features</a>
-            <a href="#demo" className="font-medium hover:text-purple-600">Demo</a>
-            <a href="#faq" className="font-medium hover:text-purple-600">FAQ</a>
-          </div>
-          <div className="flex items-center space-x-4">
-            <Link to="/pricing" className="hidden md:inline-block bg-purple-600 hover:bg-purple-700 text-white font-medium px-5 py-2 rounded-lg transition">
-              Get API Key
-            </Link>
-          </div>
-        </div>
-      </nav>
+      
 
       {/* Hero Section with SEO-rich content */}
       <section className="max-w-7xl mx-auto px-6 py-24 text-center">

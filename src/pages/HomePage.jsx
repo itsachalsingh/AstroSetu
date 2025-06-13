@@ -105,10 +105,10 @@ export default function HomePage() {
       <div className="max-w-7xl w-full mx-auto overflow-hidden">
         {/* Content Section */}
         <div className="max-w-4xl mx-auto space-y-6 p-8 md:p-10 flex flex-col justify-center text-center">
-          <h1 className="text-3xl sm:text-4xl font-bold text-white leading-tight">
+          <h1 className="text-3xl sm:text-4xl font-bold text-blue-800 leading-tight">
             All-in-One Astrology API for Horoscope, Tarot, Kundli, Panchang, Numerology & Vedic Insights
           </h1>
-          <p className="text-white text-base sm:text-lg">
+          <p className="text-blue-800 text-base sm:text-lg">
             AstroAPIHub provides real-time Horoscope, Kundli, Tarot, Panchang & Numerology APIs. Fast, accurate, and scalable — perfect for apps, websites, and spiritual platforms.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 pt-2 justify-center">
@@ -198,7 +198,7 @@ export default function HomePage() {
                   onClick={() => setActiveTab(tab.key)}
                   className={`py-2 px-4 text-sm font-semibold rounded-md border-b-2 ${
                     activeTab === tab.key
-                      ? 'text-white bg-pink-500 border-pink-700'
+                      ? 'text-blue-800 bg-pink-500 border-pink-700'
                       : 'text-gray-700 bg-white border-transparent hover:bg-pink-100'
                   }`}
                 >
@@ -219,7 +219,7 @@ export default function HomePage() {
 
             {/* Button */}
             <div className="mt-6">
-              <Link to={currentTab.slug} className="bg-pink-600 hover:bg-pink-700 text-white px-6 py-3 rounded-xl shadow-md transition">
+              <Link to={currentTab.slug} className="bg-pink-600 hover:bg-pink-700 text-blue-800 px-6 py-3 rounded-xl shadow-md transition">
                 {currentTab.button}
               </Link>
             </div>
@@ -285,7 +285,7 @@ export default function HomePage() {
           </ul>
           <a
             href="#get-started"
-            className="inline-block mt-4 bg-purple-700 text-white font-semibold py-3 px-6 rounded-xl shadow-lg transition duration-300"
+            className="inline-block mt-4 bg-purple-700 text-blue-800 font-semibold py-3 px-6 rounded-xl shadow-lg transition duration-300"
           >
             Get Started with Match Making API
           </a>
@@ -329,7 +329,7 @@ export default function HomePage() {
           </ul>
           <a
             href="#get-started"
-            className="inline-block mt-4 bg-indigo-700 hover:bg-indigo-800 text-white font-semibold py-3 px-6 rounded-xl shadow-lg transition duration-300"
+            className="inline-block mt-4 bg-indigo-700 hover:bg-indigo-800 text-blue-800 font-semibold py-3 px-6 rounded-xl shadow-lg transition duration-300"
           >
             Start with Natal Chart API
           </a>
@@ -374,7 +374,7 @@ export default function HomePage() {
           </ul>
           <a
             href="#get-started"
-            className="inline-block mt-4 bg-indigo-700 hover:bg-indigo-800 text-white font-semibold py-3 px-6 rounded-xl shadow-lg transition duration-300"
+            className="inline-block mt-4 bg-indigo-700 hover:bg-indigo-800 text-blue-800 font-semibold py-3 px-6 rounded-xl shadow-lg transition duration-300"
           >
             Start with Panchang API
           </a>
@@ -417,7 +417,7 @@ export default function HomePage() {
           </ul>
           <a
             href="#get-started"
-            className="inline-block mt-4 bg-indigo-700 hover:bg-indigo-800 text-white font-semibold py-3 px-6 rounded-xl shadow-lg transition duration-300"
+            className="inline-block mt-4 bg-indigo-700 hover:bg-indigo-800 text-blue-800 font-semibold py-3 px-6 rounded-xl shadow-lg transition duration-300"
           >
             Start with Kundli API
           </a>
@@ -469,7 +469,7 @@ export default function HomePage() {
           ></textarea>
           <button
             type="submit"
-            className="w-full bg-yellow-500 hover:bg-yellow-600 text-white font-semibold py-3 px-6 rounded-lg transition duration-300 shadow-md"
+            className="w-full bg-yellow-500 hover:bg-yellow-600 text-blue-800 font-semibold py-3 px-6 rounded-lg transition duration-300 shadow-md"
           >
             Schedule Your Demo
           </button>

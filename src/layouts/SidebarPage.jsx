@@ -10,7 +10,7 @@ const Dropdown = ({ label, items }) => {
       onMouseEnter={() => setOpen(true)}
       onMouseLeave={() => setOpen(false)}
     >
-      <button className="hover:text-yellow-400 text-white">{label}</button>
+      <button className="hover:text-yellow-400 text-blue-800">{label}</button>
 
       {/* Dropdown box */}
       <div
@@ -56,26 +56,26 @@ const solutions = [
 export default function HomePage(){
     return (
         <>
-            <header className="bg-gradient-to-r from-indigo-900 to-indigo-700 text-white shadow-md">
-                <div className="max-w-8xl mx-auto px-4 py-4 flex justify-between items-center">
+            <header className="bg-gradient-to-r from-indigo-900 to-indigo-700 bg-blue-800 shadow-md">
+                <div className="max-w-8xl mx-auto px-4  flex justify-between items-center">
                     
                     {/* Logo */}
-                    <div className="flex items-center gap-2 text-xl font-bold text-white">
-                        <img className="w-80" src="../assets/images/logo.png" />
+                    <div className="flex items-center gap-2 text-xl font-bold text-blue-800">
+                        <img className="w-50" src="../assets/images/logo.png" />
                     </div>
 
                     {/* Navigation Links */}
                     <nav className="flex gap-8 text-sm font-medium custom-nav-menu">
-                        <Link to="/" className="hover:text-yellow-400 text-white">Home</Link>
+                        <Link to="/" className="hover:text-yellow-400 text-blue-800">Home</Link>
                         <Dropdown label="Solutions" items={solutions} />
                         <Dropdown label="API’s" items={apis} />
-                        <Link to="/pricing" className="hover:text-yellow-400 text-white">Pricing</Link>
+                        <Link to="/pricing" className="hover:text-yellow-400 text-blue-800">Pricing</Link>
                     </nav>
 
                     {/* Started Button */}
                     <Link
                     to="/pricing"
-                    className="ml-6 px-4 py-2 bg-white text-indigo-800 font-semibold rounded-lg shadow hover:bg-yellow-400 hover:text-white transition custom-button"
+                    className="ml-6 px-4 py-2 bg-white text-indigo-800 font-semibold rounded-lg shadow hover:bg-yellow-400 hover:text-blue-800 transition custom-button"
                     >
                     Started
                     </Link>
