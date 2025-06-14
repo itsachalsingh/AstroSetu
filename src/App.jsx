@@ -30,6 +30,9 @@ import ScheduleDemoPage from './pages/ScheduleDemoPage'
 import BlogPage from './pages/BlogPage'
 import SignIn from './pages/SignIn'
 import SignUp from './pages/SignUp'
+import IndianFestivalPage from './pages/IndianFestival'
+import AstroChatbot from './pages/AstroChatbot'
+import CosmicLifestylePage from './pages/CosmicLifestylePage'
 
 const routes = [
   {
@@ -128,6 +131,18 @@ const routes = [
       {
         path:'/signup',
         element: <SignUp />
+      },
+      {
+        path:'/indianfestival',
+        element: <IndianFestivalPage />
+      },
+      {
+        path:'/astrochat',
+        element: <AstroChatbot />
+      },
+      {
+        path:'/lifestyle',
+        element: <CosmicLifestylePage />
       }
     ]
 

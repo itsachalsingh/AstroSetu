@@ -2,57 +2,29 @@ import React, { useState } from "react";
 import { Tabs, Tab } from "@mui/material";
 import { Link } from 'react-router-dom';
 
-const zodiacSigns = [
-  { name: "Aries", icon: "♈", date: "Mar 21 - Apr 19" },
-  { name: "Taurus", icon: "♉", date: "Apr 20 - May 20" },
-  { name: "Gemini", icon: "♊", date: "May 21 - Jun 20" },
-  { name: "Cancer", icon: "♋", date: "Jun 21 - Jul 22" },
-  { name: "Leo", icon: "♌", date: "Jul 23 - Aug 22" },
-  { name: "Virgo", icon: "♍", date: "Aug 23 - Sep 22" },
-  { name: "Libra", icon: "♎", date: "Sep 23 - Oct 22" },
-  { name: "Scorpio", icon: "♏", date: "Oct 23 - Nov 21" },
-  { name: "Sagittarius", icon: "♐", date: "Nov 22 - Dec 21" },
-  { name: "Capricorn", icon: "♑", date: "Dec 22 - Jan 19" },
-  { name: "Aquarius", icon: "♒", date: "Jan 20 - Feb 18" },
-  { name: "Pisces", icon: "♓", date: "Feb 19 - Mar 20" }
-];
 
-const chineseZodiacs = [
-  { name: "Rat", icon: "🐀", years: "2020, 2008, 1996" },
-  { name: "Ox", icon: "🐂", years: "2021, 2009, 1997" },
-  { name: "Tiger", icon: "🐅", years: "2022, 2010, 1998" },
-  { name: "Rabbit", icon: "🐇", years: "2023, 2011, 1999" },
-  { name: "Dragon", icon: "🐉", years: "2024, 2012, 2000" },
-  { name: "Snake", icon: "🐍", years: "2025, 2013, 2001" },
-  { name: "Horse", icon: "🐎", years: "2026, 2014, 2002" },
-  { name: "Goat", icon: "🐐", years: "2027, 2015, 2003" },
-  { name: "Monkey", icon: "🐒", years: "2028, 2016, 2004" },
-  { name: "Rooster", icon: "🐓", years: "2029, 2017, 2005" },
-  { name: "Dog", icon: "🐕", years: "2030, 2018, 2006" },
-  { name: "Pig", icon: "🐖", years: "2031, 2019, 2007" }
-];
 
 // Enhanced FAQ data with SEO-rich content
 const faqs = [
   {
-    q: "What is AstroSetuAPI and how does it work?",
-    a: "AstroSetuAPI is a comprehensive astrology API platform providing accurate daily horoscopes, Chinese zodiac predictions, numeroscope insights, and Panchang data. Our RESTful API delivers JSON responses that developers can easily integrate into websites, mobile apps, and digital platforms to offer personalized astrological content to users."
+    q: "What is AstroSetu Numerology API and how does it work?",
+    a: "AstroSetu Numerology API is a powerful numerology calculation API that provides accurate life path numbers, destiny numbers, and personalized numerological insights based on birth dates and names. Our RESTful API delivers JSON responses that developers can easily integrate into websites, mobile apps, and digital platforms to offer numerology readings to users."
   },
   {
-    q: "How accurate are your horoscope predictions?",
-    a: "Our predictions are generated using time-tested astrological calculations combined with modern algorithms. We source data from reputable astrological databases and update our predictions daily based on planetary movements. While astrology is interpretive by nature, we strive for consistency and relevance in all our readings."
+    q: "What numerology systems does your API support?",
+    a: "Our API supports multiple numerology systems including Pythagorean numerology (Western), Chaldean numerology (ancient Babylonian), and Kabbalah numerology. We also provide compatibility calculations between different numbers and personalized daily forecasts based on numerological cycles."
   },
   {
-    q: "What makes AstroSetuAPI better than other astrology APIs?",
-    a: "AstroSetuAPI stands out with its all-in-one solution (Western, Chinese, Numerology, and Panchang), developer-friendly documentation, 99.9% uptime, and affordable pricing. Our API responses are optimized for speed (average 200ms response time) and we offer more detailed predictions than competitors."
+    q: "How accurate are your numerology calculations?",
+    a: "Our calculations follow precise numerological algorithms that have been refined over years of research. We use advanced reduction methods to derive core numbers while preserving master numbers (11, 22, 33). The accuracy of interpretations depends on correct input data, but our mathematical calculations are 100% precise."
   },
   {
-    q: "Can I use AstroSetuAPI for commercial applications?",
-    a: "Absolutely! Many businesses use our API to power astrology features in their apps, websites, and digital products. Our Business plan includes commercial rights and white-label options. Check our pricing page for details on commercial usage limits."
+    q: "Can I use your API for commercial applications?",
+    a: "Absolutely! Many businesses use our API to power numerology features in their apps, websites, and digital products. Our Business plan includes commercial rights and white-label options. Check our pricing page for details on commercial usage limits."
   },
   {
-    q: "How often is your data updated?",
-    a: "All horoscope and numeroscope data is refreshed daily at midnight UTC. Chinese zodiac predictions update with the lunar calendar, and Panchang data follows traditional Hindu calendrical calculations for accuracy."
+    q: "What numerology calculations can I perform with your API?",
+    a: "Our API can calculate: Life Path Number, Destiny Number, Soul Urge Number, Personality Number, Birthday Number, Current Name Number, Karmic Debt Numbers, Personal Year/Month/Day Cycles, Compatibility Scores, and Lucky Numbers based on multiple numerology systems."
   },
   {
     q: "Do you offer support for API integration?",
@@ -89,13 +61,11 @@ const PricingCard = ({ title, price, features, popular, cta }) => (
 
 export default function NumerologyPage() {
   const [tab, setTab] = useState(0);
-  const [selectedSign, setSelectedSign] = useState(zodiacSigns[0]);
-  const [selectedChinese, setSelectedChinese] = useState(chineseZodiacs[0]);
   const [dob, setDob] = useState("");
+  const [name, setName] = useState("");
   const [faqOpenIndex, setFaqOpenIndex] = useState(null);
 
-
-  // Numerology calculation
+  // Numerology calculations
   const calculateLifePathNumber = (dob) => {
     if (!dob) return null;
     const digits = dob.replace(/-/g, '').split('').map(Number);
@@ -106,109 +76,160 @@ export default function NumerologyPage() {
     return sum;
   };
 
+  const calculateDestinyNumber = (name) => {
+    if (!name) return null;
+    
+    // Pythagorean numerology conversion
+    const letterValues = {
+      'a': 1, 'b': 2, 'c': 3, 'd': 4, 'e': 5, 'f': 6, 'g': 7, 'h': 8, 'i': 9,
+      'j': 1, 'k': 2, 'l': 3, 'm': 4, 'n': 5, 'o': 6, 'p': 7, 'q': 8, 'r': 9,
+      's': 1, 't': 2, 'u': 3, 'v': 4, 'w': 5, 'x': 6, 'y': 7, 'z': 8
+    };
+    
+    let sum = 0;
+    for (let char of name.toLowerCase()) {
+      if (letterValues[char]) {
+        sum += letterValues[char];
+      }
+    }
+    
+    while (sum > 9 && sum !== 11 && sum !== 22) {
+      sum = sum.toString().split('').map(Number).reduce((a, b) => a + b, 0);
+    }
+    
+    return sum;
+  };
+
   const getNumeroscopeMessage = (number) => {
     const messages = {
       1: { 
         insight: "You're a natural leader with strong independence. Your pioneering spirit drives you to innovate.", 
         career: "Excel in entrepreneurial ventures, management, or any field requiring initiative and originality.",
-        traits: ["Independent", "Determined", "Innovative"]
+        traits: ["Independent", "Determined", "Innovative"],
+        compatibility: [3, 5, 7],
+        challenges: "Learning patience and cooperation"
       },
       2: { 
         insight: "Your diplomatic nature makes you an excellent peacemaker. You thrive in cooperative environments.", 
         career: "Ideal for counseling, diplomacy, customer service, or any teamwork-oriented profession.",
-        traits: ["Diplomatic", "Sensitive", "Cooperative"]
+        traits: ["Diplomatic", "Sensitive", "Cooperative"],
+        compatibility: [4, 6, 8],
+        challenges: "Developing self-confidence"
       },
       3: { 
         insight: "Your creativity and expressiveness shine in all you do. You have a natural gift for communication.", 
         career: "Flourish in writing, performing arts, design, or any creative/expressive field.",
-        traits: ["Creative", "Expressive", "Sociable"]
+        traits: ["Creative", "Expressive", "Sociable"],
+        compatibility: [1, 5, 7],
+        challenges: "Focusing and following through"
       },
       4: { 
         insight: "Your practical approach and strong work ethic make you reliable and organized.", 
         career: "Suited for engineering, project management, accounting, or any detail-oriented work.",
-        traits: ["Practical", "Organized", "Hardworking"]
+        traits: ["Practical", "Organized", "Hardworking"],
+        compatibility: [2, 6, 8],
+        challenges: "Being more flexible"
       },
       5: { 
         insight: "Your adventurous spirit craves freedom and variety. You adapt well to change.", 
         career: "Thrive in travel, sales, journalism, or any dynamic, changing environment.",
-        traits: ["Adventurous", "Adaptable", "Freedom-loving"]
+        traits: ["Adventurous", "Adaptable", "Freedom-loving"],
+        compatibility: [1, 3, 7],
+        challenges: "Developing discipline"
       },
       6: { 
         insight: "Your nurturing nature makes you responsible and caring. You're the rock for many.", 
         career: "Excel in teaching, healthcare, social work, or any service-oriented profession.",
-        traits: ["Nurturing", "Responsible", "Compassionate"]
+        traits: ["Nurturing", "Responsible", "Compassionate"],
+        compatibility: [2, 4, 8],
+        challenges: "Setting healthy boundaries"
       },
       7: { 
         insight: "Your analytical mind seeks deeper truths. You have strong intuition and spiritual awareness.", 
         career: "Good for research, science, philosophy, or metaphysical studies.",
-        traits: ["Analytical", "Spiritual", "Introspective"]
+        traits: ["Analytical", "Spiritual", "Introspective"],
+        compatibility: [1, 3, 5],
+        challenges: "Staying grounded"
       },
       8: { 
         insight: "Your ambition and executive abilities make you goal-oriented and authoritative.", 
         career: "Excel in business, finance, law, or any leadership position.",
-        traits: ["Ambitious", "Authoritative", "Goal-oriented"]
+        traits: ["Ambitious", "Authoritative", "Goal-oriented"],
+        compatibility: [2, 4, 6],
+        challenges: "Balancing material and spiritual"
       },
       9: { 
         insight: "Your humanitarian nature makes you compassionate and globally conscious.", 
         career: "Ideal for healing professions, environmental work, or global humanitarian efforts.",
-        traits: ["Humanitarian", "Compassionate", "Artistic"]
+        traits: ["Humanitarian", "Compassionate", "Artistic"],
+        compatibility: [3, 6, 9],
+        challenges: "Avoiding burnout"
       },
       11: { 
         insight: "As a master number, you're highly intuitive with visionary capabilities.", 
         career: "Inspire others through art, spiritual leadership, or innovative technologies.",
-        traits: ["Intuitive", "Visionary", "Inspirational"]
+        traits: ["Intuitive", "Visionary", "Inspirational"],
+        compatibility: [2, 4, 7],
+        challenges: "Managing energy and stress"
       },
       22: { 
         insight: "The 'Master Builder' - you can turn dreams into reality on a large scale.", 
         career: "Capable of major accomplishments in architecture, large-scale projects, or global initiatives.",
-        traits: ["Practical Visionary", "Masterful", "Large-scale Thinker"]
+        traits: ["Practical Visionary", "Masterful", "Large-scale Thinker"],
+        compatibility: [4, 6, 8],
+        challenges: "Balancing vision with practicality"
       },
       33: { 
         insight: "The 'Master Teacher' - your nurturing extends to global consciousness.", 
         career: "Work involving spiritual teaching, global healing, or transformative education.",
-        traits: ["Healing", "Teaching", "Transforming"]
+        traits: ["Healing", "Teaching", "Transforming"],
+        compatibility: [6, 9, 11],
+        challenges: "Maintaining personal energy"
       }
     };
     return messages[number] || null;
   };
 
   const lifePathNumber = calculateLifePathNumber(dob);
+  const destinyNumber = calculateDestinyNumber(name);
   const numeroscope = getNumeroscopeMessage(lifePathNumber);
 
   return (
     <div className="font-sans text-gray-900 bg-gradient-to-br from-white to-indigo-50 min-h-screen">
-      
-
       {/* Hero Section with SEO-rich content */}
       <section className="max-w-7xl mx-auto px-6 py-24 text-center">
         <div className="max-w-4xl mx-auto">
           <h1 className="text-5xl md:text-6xl font-extrabold mb-6 leading-tight">
-            Premium <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-indigo-600">Astrology API</span> for Developers
+            Advanced <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-indigo-600">Numerology API</span> for Developers
           </h1>
           <p className="text-xl text-gray-700 mb-8">
-            Integrate accurate daily horoscopes, Chinese zodiac predictions, numerology insights, and Panchang data into your apps and websites with our developer-friendly API.
+            Integrate precise numerology calculations including Life Path Numbers, Destiny Numbers, and personalized numerological insights into your apps with our developer-friendly API.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <Link to="/pricing" className="inline-block bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white font-semibold px-8 py-4 rounded-lg shadow-lg transition transform hover:-translate-y-1">
               Get Started - Free Trial
             </Link>
             <Link href="#demo" className="inline-block bg-white hover:bg-gray-100 text-gray-800 font-semibold px-8 py-4 rounded-lg shadow-md border border-gray-200 transition transform hover:-translate-y-1">
-              Live Demo
+              Live Numerology Calculator
             </Link>
           </div>
         </div>
         <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
           <div className="bg-white p-4 rounded-xl shadow-md border border-gray-100">
-            <div className="text-3xl mb-2">♈</div>
-            <h3 className="font-bold">Western Zodiac</h3>
-          </div>
-          <div className="bg-white p-4 rounded-xl shadow-md border border-gray-100">
-            <div className="text-3xl mb-2">🐉</div>
-            <h3 className="font-bold">Chinese Zodiac</h3>
-          </div>
-          <div className="bg-white p-4 rounded-xl shadow-md border border-gray-100">
             <div className="text-3xl mb-2">🔢</div>
-            <h3 className="font-bold">Numeroscope</h3>
+            <h3 className="font-bold">Pythagorean</h3>
+          </div>
+          <div className="bg-white p-4 rounded-xl shadow-md border border-gray-100">
+            <div className="text-3xl mb-2">🏺</div>
+            <h3 className="font-bold">Chaldean</h3>
+          </div>
+          <div className="bg-white p-4 rounded-xl shadow-md border border-gray-100">
+            <div className="text-3xl mb-2">✡️</div>
+            <h3 className="font-bold">Kabbalah</h3>
+          </div>
+          <div className="bg-white p-4 rounded-xl shadow-md border border-gray-100">
+            <div className="text-3xl mb-2">💞</div>
+            <h3 className="font-bold">Compatibility</h3>
           </div>
         </div>
       </section>
@@ -218,11 +239,11 @@ export default function NumerologyPage() {
         <div className="max-w-7xl mx-auto px-6">
           <p className="text-center text-gray-600 mb-6">Trusted by developers worldwide</p>
           <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-70">
-            <div className="text-xl font-bold text-gray-700">TechStart Inc.</div>
-            <div className="text-xl font-bold text-gray-700">AstroApp</div>
-            <div className="text-xl font-bold text-gray-700">Wellness360</div>
+            <div className="text-xl font-bold text-gray-700">NumerologyApp</div>
             <div className="text-xl font-bold text-gray-700">SpiritualGuide</div>
-            <div className="text-xl font-bold text-gray-700">ZodiacMedia</div>
+            <div className="text-xl font-bold text-gray-700">LifePathAI</div>
+            <div className="text-xl font-bold text-gray-700">DestinyMatch</div>
+            <div className="text-xl font-bold text-gray-700">CosmicInsights</div>
           </div>
         </div>
       </div>
@@ -231,96 +252,125 @@ export default function NumerologyPage() {
       <section id="features" className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-extrabold mb-4">Powerful Astrology API Features</h2>
+            <h2 className="text-4xl font-extrabold mb-4">Comprehensive Numerology API Features</h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Everything you need to integrate astrology into your applications
+              Everything you need to integrate numerology calculations into your applications
             </p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-12">
             <div className="bg-gradient-to-b from-purple-50 to-white p-8 rounded-xl border border-purple-100 shadow-sm">
               <div className="w-14 h-14 bg-purple-100 rounded-lg flex items-center justify-center mb-6">
-                <span className="text-2xl">♈</span>
-              </div>
-              <h3 className="text-2xl font-bold mb-4">Western Horoscope API</h3>
-              <p className="text-gray-700 mb-4">
-                Get daily, weekly, and monthly horoscopes for all 12 zodiac signs with detailed predictions for love, career, health, and more.
-              </p>
-              <ul className="space-y-2 text-gray-600">
-                <li className="flex items-start">
-                  <svg className="w-4 h-4 text-purple-500 mr-2 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path>
-                  </svg>
-                  <span>Sun sign predictions</span>
-                </li>
-                <li className="flex items-start">
-                  <svg className="w-4 h-4 text-purple-500 mr-2 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path>
-                  </svg>
-                  <span>Compatibility reports</span>
-                </li>
-                <li className="flex items-start">
-                  <svg className="w-4 h-4 text-purple-500 mr-2 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path>
-                  </svg>
-                  <span>Planetary transit insights</span>
-                </li>
-              </ul>
-            </div>
-            <div className="bg-gradient-to-b from-purple-50 to-white p-8 rounded-xl border border-purple-100 shadow-sm">
-              <div className="w-14 h-14 bg-purple-100 rounded-lg flex items-center justify-center mb-6">
-                <span className="text-2xl">🐉</span>
-              </div>
-              <h3 className="text-2xl font-bold mb-4">Chinese Zodiac API</h3>
-              <p className="text-gray-700 mb-4">
-                Access detailed Chinese zodiac predictions based on birth year, including personality traits, compatibility, and yearly forecasts.
-              </p>
-              <ul className="space-y-2 text-gray-600">
-                <li className="flex items-start">
-                  <svg className="w-4 h-4 text-purple-500 mr-2 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path>
-                  </svg>
-                  <span>12 animal signs</span>
-                </li>
-                <li className="flex items-start">
-                  <svg className="w-4 h-4 text-purple-500 mr-2 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path>
-                  </svg>
-                  <span>Five elements theory</span>
-                </li>
-                <li className="flex items-start">
-                  <svg className="w-4 h-4 text-purple-500 mr-2 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path>
-                  </svg>
-                  <span>Yearly fortune predictions</span>
-                </li>
-              </ul>
-            </div>
-            <div className="bg-gradient-to-b from-purple-50 to-white p-8 rounded-xl border border-purple-100 shadow-sm">
-              <div className="w-14 h-14 bg-purple-100 rounded-lg flex items-center justify-center mb-6">
                 <span className="text-2xl">🔢</span>
               </div>
-              <h3 className="text-2xl font-bold mb-4">Numeroscope API</h3>
+              <h3 className="text-2xl font-bold mb-4">Core Numerology Calculations</h3>
               <p className="text-gray-700 mb-4">
-                Calculate life path numbers, destiny numbers, and other numerology insights with detailed interpretations.
+                Calculate all essential numerology numbers including Life Path, Destiny, Soul Urge, and Personality numbers with precise algorithms.
               </p>
               <ul className="space-y-2 text-gray-600">
                 <li className="flex items-start">
                   <svg className="w-4 h-4 text-purple-500 mr-2 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path>
                   </svg>
-                  <span>Life path number</span>
+                  <span>Life Path Number</span>
                 </li>
                 <li className="flex items-start">
                   <svg className="w-4 h-4 text-purple-500 mr-2 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path>
                   </svg>
-                  <span>Destiny number</span>
+                  <span>Destiny Number</span>
                 </li>
                 <li className="flex items-start">
                   <svg className="w-4 h-4 text-purple-500 mr-2 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path>
                   </svg>
-                  <span>Personal year cycles</span>
+                  <span>Soul Urge & Personality</span>
+                </li>
+              </ul>
+            </div>
+            <div className="bg-gradient-to-b from-purple-50 to-white p-8 rounded-xl border border-purple-100 shadow-sm">
+              <div className="w-14 h-14 bg-purple-100 rounded-lg flex items-center justify-center mb-6">
+                <span className="text-2xl">🏺</span>
+              </div>
+              <h3 className="text-2xl font-bold mb-4">Multiple Numerology Systems</h3>
+              <p className="text-gray-700 mb-4">
+                Support for Pythagorean, Chaldean, and Kabbalah numerology systems with accurate calculations for each method.
+              </p>
+              <ul className="space-y-2 text-gray-600">
+                <li className="flex items-start">
+                  <svg className="w-4 h-4 text-purple-500 mr-2 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path>
+                  </svg>
+                  <span>Pythagorean (Western)</span>
+                </li>
+                <li className="flex items-start">
+                  <svg className="w-4 h-4 text-purple-500 mr-2 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path>
+                  </svg>
+                  <span>Chaldean (Ancient)</span>
+                </li>
+                <li className="flex items-start">
+                  <svg className="w-4 h-4 text-purple-500 mr-2 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path>
+                  </svg>
+                  <span>Kabbalah (Mystical)</span>
+                </li>
+              </ul>
+            </div>
+            <div className="bg-gradient-to-b from-purple-50 to-white p-8 rounded-xl border border-purple-100 shadow-sm">
+              <div className="w-14 h-14 bg-purple-100 rounded-lg flex items-center justify-center mb-6">
+                <span className="text-2xl">💞</span>
+              </div>
+              <h3 className="text-2xl font-bold mb-4">Compatibility Analysis</h3>
+              <p className="text-gray-700 mb-4">
+                Calculate compatibility scores between numbers for relationships, business partnerships, and team dynamics.
+              </p>
+              <ul className="space-y-2 text-gray-600">
+                <li className="flex items-start">
+                  <svg className="w-4 h-4 text-purple-500 mr-2 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path>
+                  </svg>
+                  <span>Romantic Compatibility</span>
+                </li>
+                <li className="flex items-start">
+                  <svg className="w-4 h-4 text-purple-500 mr-2 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path>
+                  </svg>
+                  <span>Business Partnerships</span>
+                </li>
+                <li className="flex items-start">
+                  <svg className="w-4 h-4 text-purple-500 mr-2 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path>
+                  </svg>
+                  <span>Team Dynamics Analysis</span>
+                </li>
+              </ul>
+            </div>
+            <div className="bg-gradient-to-b from-purple-50 to-white p-8 rounded-xl border border-purple-100 shadow-sm">
+              <div className="w-14 h-14 bg-purple-100 rounded-lg flex items-center justify-center mb-6">
+                <span className="text-2xl">📅</span>
+              </div>
+              <h3 className="text-2xl font-bold mb-4">Personal Cycles</h3>
+              <p className="text-gray-700 mb-4">
+                Calculate personal year, month, and day cycles with interpretations for optimal timing of events.
+              </p>
+              <ul className="space-y-2 text-gray-600">
+                <li className="flex items-start">
+                  <svg className="w-4 h-4 text-purple-500 mr-2 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path>
+                  </svg>
+                  <span>Personal Year Cycle</span>
+                </li>
+                <li className="flex items-start">
+                  <svg className="w-4 h-4 text-purple-500 mr-2 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path>
+                  </svg>
+                  <span>Personal Month Cycle</span>
+                </li>
+                <li className="flex items-start">
+                  <svg className="w-4 h-4 text-purple-500 mr-2 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path>
+                  </svg>
+                  <span>Personal Day Cycle</span>
                 </li>
               </ul>
             </div>
@@ -402,29 +452,50 @@ export default function NumerologyPage() {
                 <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
                 <div className="w-3 h-3 rounded-full bg-green-500"></div>
               </div>
-              <div className="text-sm text-gray-400">GET /api/v1/horoscope/daily?sign=aries</div>
+              <div className="text-sm text-gray-400">GET /api/v1/numerology/reading?dob=1990-05-15&name=John</div>
             </div>
             <div className="p-6 overflow-x-auto">
               <pre className="text-green-400 text-sm">
                 {`{
   "success": true,
   "data": {
-    "date": "2023-11-15",
-    "sign": "Aries",
-    "horoscope": {
-      "love": "Today brings romantic opportunities...",
-      "career": "A project you've been working on...",
-      "health": "Pay attention to your energy levels...",
-      "luck": "Lucky number: 7, Color: Red"
+    "life_path_number": 3,
+    "destiny_number": 7,
+    "soul_urge_number": 5,
+    "personality_number": 2,
+    "birthday_number": 6,
+    "pythagorean": {
+      "life_path": 3,
+      "destiny": 7,
+      "soul_urge": 5,
+      "personality": 2
     },
+    "chaldean": {
+      "life_path": 11,
+      "destiny": 22,
+      "soul_urge": 7,
+      "personality": 4
+    },
+    "personal_year": 5,
+    "personal_month": 3,
+    "personal_day": 8,
+    "karmic_lessons": [4, 8],
     "compatibility": {
-      "best": "Leo",
-      "good": ["Sagittarius", "Gemini"],
-      "challenging": "Cancer"
+      "best": [3, 5, 7],
+      "good": [1, 9],
+      "challenging": [4, 8]
     },
-    "planetary": {
-      "moon_phase": "Waxing Crescent",
-      "current_transits": "Mars in Gemini brings..."
+    "interpretations": {
+      "life_path": "Creative expression and joy are your natural gifts...",
+      "destiny": "Your analytical mind seeks deeper truths...",
+      "soul_urge": "You crave freedom and variety in life...",
+      "personality": "You present yourself as diplomatic and cooperative..."
+    },
+    "lucky_elements": {
+      "color": "Yellow",
+      "stone": "Citrine",
+      "number": 3,
+      "day": "Thursday"
     }
   }
 }`}
@@ -436,9 +507,9 @@ export default function NumerologyPage() {
 
       {/* Live Demo Section */}
       <section id="demo" className="max-w-4xl mx-auto px-6 py-20">
-        <h2 className="text-4xl font-extrabold text-center mb-4">Interactive Demo</h2>
+        <h2 className="text-4xl font-extrabold text-center mb-4">Numerology Calculator</h2>
         <p className="text-xl text-gray-600 text-center mb-12 max-w-3xl mx-auto">
-          Try our astrology APIs right in your browser. See how easy it is to get personalized predictions.
+          Try our numerology calculations right in your browser. See how easy it is to get personalized numerological insights.
         </p>
         
         <Tabs 
@@ -449,227 +520,17 @@ export default function NumerologyPage() {
           TabIndicatorProps={{ style: { background: '#7c3aed', height: '4px' } }}
           textColor="inherit"
         >
-          <Tab label={<span className="font-semibold">Western Horoscope</span>} />
-          <Tab label={<span className="font-semibold">Chinese Zodiac</span>} />
-          <Tab label={<span className="font-semibold">Numeroscope</span>} />
+          <Tab label={<span className="font-semibold">Life Path Number</span>} />
+          <Tab label={<span className="font-semibold">Destiny Number</span>} />
+          <Tab label={<span className="font-semibold">Full Reading</span>} />
         </Tabs>
 
         <div className="bg-white rounded-xl shadow-xl overflow-hidden border border-gray-200">
           {tab === 0 && (
             <div>
               <div className="p-6 border-b border-gray-200">
-                <h3 className="text-2xl font-semibold mb-2">Western Zodiac Horoscope</h3>
-                <p className="text-gray-600">Select your zodiac sign to see today's prediction</p>
-              </div>
-              <div className="p-6 grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-3">
-                {zodiacSigns.map(sign => (
-                  <button
-                    key={sign.name}
-                    onClick={() => setSelectedSign(sign)}
-                    className={`py-3 px-2 rounded-lg border transition-all flex flex-col items-center
-                      ${selectedSign.name === sign.name ? 
-                        "bg-purple-100 border-purple-400 shadow-md" : 
-                        "bg-white border-gray-200 hover:shadow-lg hover:border-purple-300"}`}
-                  >
-                    <span className="text-2xl mb-1">{sign.icon}</span>
-                    <span className="text-sm font-medium">{sign.name}</span>
-                    <span className="text-xs text-gray-500 mt-1">{sign.date}</span>
-                  </button>
-                ))}
-              </div>
-              <div className="p-6 bg-gray-50 border-t border-gray-200">
-                <h4 className="text-xl font-bold mb-3 flex items-center">
-                  <span className="text-2xl mr-2">{selectedSign.icon}</span>
-                  Today's Horoscope for {selectedSign.name} ({selectedSign.date})
-                </h4>
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div>
-                    <h5 className="font-semibold mb-2 text-purple-700">Daily Prediction</h5>
-                    <p className="text-gray-700 mb-4">
-                      Today brings exciting opportunities for {selectedSign.name.toLowerCase()} natives. 
-                      The planetary alignment suggests a favorable time for taking initiative in 
-                      creative projects. Your natural {selectedSign.name === "Aries" || selectedSign.name === "Leo" || selectedSign.name === "Sagittarius" ? "fire" : 
-                      selectedSign.name === "Taurus" || selectedSign.name === "Virgo" || selectedSign.name === "Capricorn" ? "earth" :
-                      selectedSign.name === "Gemini" || selectedSign.name === "Libra" || selectedSign.name === "Aquarius" ? "air" : "water"} 
-                      energy is particularly strong today.
-                    </p>
-                  </div>
-                  <div>
-                    <h5 className="font-semibold mb-2 text-purple-700">Key Areas</h5>
-                    <ul className="space-y-3">
-                      <li className="flex">
-                        <div className="bg-purple-100 rounded-full w-6 h-6 flex items-center justify-center mr-3 flex-shrink-0">
-                          <span className="text-purple-600">💖</span>
-                        </div>
-                        <div>
-                          <span className="font-medium">Love:</span> {selectedSign.name === "Aries" ? "Passionate encounters likely" :
-                          selectedSign.name === "Taurus" ? "Focus on emotional security" :
-                          selectedSign.name === "Gemini" ? "Good day for communication" :
-                          selectedSign.name === "Cancer" ? "Nurture your relationships" :
-                          selectedSign.name === "Leo" ? "Romantic gestures appreciated" :
-                          selectedSign.name === "Virgo" ? "Practical expressions of love" :
-                          selectedSign.name === "Libra" ? "Harmony in relationships" :
-                          selectedSign.name === "Scorpio" ? "Deep emotional connections" :
-                          selectedSign.name === "Sagittarius" ? "Adventures with partner" :
-                          selectedSign.name === "Capricorn" ? "Stable, committed energy" :
-                          selectedSign.name === "Aquarius" ? "Unconventional expressions" :
-                          "Compassionate interactions"}
-                        </div>
-                      </li>
-                      <li className="flex">
-                        <div className="bg-purple-100 rounded-full w-6 h-6 flex items-center justify-center mr-3 flex-shrink-0">
-                          <span className="text-purple-600">💼</span>
-                        </div>
-                        <div>
-                          <span className="font-medium">Career:</span> {selectedSign.name === "Aries" ? "Leadership opportunities arise" :
-                          selectedSign.name === "Taurus" ? "Financial gains possible" :
-                          selectedSign.name === "Gemini" ? "Networking brings benefits" :
-                          selectedSign.name === "Cancer" ? "Trust your instincts" :
-                          selectedSign.name === "Leo" ? "Recognition for your work" :
-                          selectedSign.name === "Virgo" ? "Attention to detail pays off" :
-                          selectedSign.name === "Libra" ? "Collaboration is key" :
-                          selectedSign.name === "Scorpio" ? "Strategic planning favored" :
-                          selectedSign.name === "Sagittarius" ? "New horizons appear" :
-                          selectedSign.name === "Capricorn" ? "Long-term planning" :
-                          selectedSign.name === "Aquarius" ? "Innovative ideas shine" :
-                          "Creative solutions emerge"}
-                        </div>
-                      </li>
-                      <li className="flex">
-                        <div className="bg-purple-100 rounded-full w-6 h-6 flex items-center justify-center mr-3 flex-shrink-0">
-                          <span className="text-purple-600">💪</span>
-                        </div>
-                        <div>
-                          <span className="font-medium">Health:</span> {selectedSign.name === "Aries" ? "Watch for stress-related tension" :
-                          selectedSign.name === "Taurus" ? "Focus on throat/neck" :
-                          selectedSign.name === "Gemini" ? "Mental relaxation needed" :
-                          selectedSign.name === "Cancer" ? "Digestive health" :
-                          selectedSign.name === "Leo" ? "Heart health focus" :
-                          selectedSign.name === "Virgo" ? "Dietary adjustments" :
-                          selectedSign.name === "Libra" ? "Kidney area awareness" :
-                          selectedSign.name === "Scorpio" ? "Reproductive health" :
-                          selectedSign.name === "Sagittarius" ? "Hip/liver attention" :
-                          selectedSign.name === "Capricorn" ? "Knee/joint care" :
-                          selectedSign.name === "Aquarius" ? "Circulation focus" :
-                          "Foot/lymph care"}
-                        </div>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-          )}
-
-          {tab === 1 && (
-            <div>
-              <div className="p-6 border-b border-gray-200">
-                <h3 className="text-2xl font-semibold mb-2">Chinese Zodiac Prediction</h3>
-                <p className="text-gray-600">Select your Chinese zodiac animal to see today's insight</p>
-              </div>
-              <div className="p-6 grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-3">
-                {chineseZodiacs.map(animal => (
-                  <button
-                    key={animal.name}
-                    onClick={() => setSelectedChinese(animal)}
-                    className={`py-3 px-2 rounded-lg border transition-all flex flex-col items-center
-                      ${selectedChinese.name === animal.name ? 
-                        "bg-purple-100 border-purple-400 shadow-md" : 
-                        "bg-white border-gray-200 hover:shadow-lg hover:border-purple-300"}`}
-                  >
-                    <span className="text-2xl mb-1">{animal.icon}</span>
-                    <span className="text-sm font-medium">{animal.name}</span>
-                    <span className="text-xs text-gray-500 mt-1">{animal.years}</span>
-                  </button>
-                ))}
-              </div>
-              <div className="p-6 bg-gray-50 border-t border-gray-200">
-                <h4 className="text-xl font-bold mb-3 flex items-center">
-                  <span className="text-2xl mr-2">{selectedChinese.icon}</span>
-                  {selectedChinese.name}'s Daily Insight ({selectedChinese.years.split(",")[0]} born)
-                </h4>
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div>
-                    <h5 className="font-semibold mb-2 text-purple-700">General Forecast</h5>
-                    <p className="text-gray-700 mb-4">
-                      The {selectedChinese.name} finds today to be a {selectedChinese.name === "Rat" || selectedChinese.name === "Dragon" || selectedChinese.name === "Monkey" ? "highly favorable" :
-                      selectedChinese.name === "Ox" || selectedChinese.name === "Snake" || selectedChinese.name === "Rooster" ? "moderately productive" :
-                      selectedChinese.name === "Tiger" || selectedChinese.name === "Horse" || selectedChinese.name === "Dog" ? "somewhat challenging but rewarding" :
-                      "calm and nurturing"} day. Your natural {selectedChinese.name} traits will serve you well in navigating today's energies.
-                    </p>
-                  </div>
-                  <div>
-                    <h5 className="font-semibold mb-2 text-purple-700">Key Aspects</h5>
-                    <ul className="space-y-3">
-                      <li className="flex">
-                        <div className="bg-purple-100 rounded-full w-6 h-6 flex items-center justify-center mr-3 flex-shrink-0">
-                          <span className="text-purple-600">💰</span>
-                        </div>
-                        <div>
-                          <span className="font-medium">Wealth:</span> {selectedChinese.name === "Rat" ? "Unexpected gains possible" :
-                          selectedChinese.name === "Ox" ? "Steady accumulation" :
-                          selectedChinese.name === "Tiger" ? "Risk could bring reward" :
-                          selectedChinese.name === "Rabbit" ? "Conservative approach best" :
-                          selectedChinese.name === "Dragon" ? "Big opportunities" :
-                          selectedChinese.name === "Snake" ? "Strategic investments" :
-                          selectedChinese.name === "Horse" ? "Ups and downs" :
-                          selectedChinese.name === "Goat" ? "Artistic ventures" :
-                          selectedChinese.name === "Monkey" ? "Creative solutions" :
-                          selectedChinese.name === "Rooster" ? "Attention to details" :
-                          selectedChinese.name === "Dog" ? "Protect assets" :
-                          "Generosity returns"}
-                        </div>
-                      </li>
-                      <li className="flex">
-                        <div className="bg-purple-100 rounded-full w-6 h-6 flex items-center justify-center mr-3 flex-shrink-0">
-                          <span className="text-purple-600">❤️</span>
-                        </div>
-                        <div>
-                          <span className="font-medium">Relationships:</span> {selectedChinese.name === "Rat" ? "Social connections flourish" :
-                          selectedChinese.name === "Ox" ? "Stable bonds strengthen" :
-                          selectedChinese.name === "Tiger" ? "Passionate encounters" :
-                          selectedChinese.name === "Rabbit" ? "Harmony prevails" :
-                          selectedChinese.name === "Dragon" ? "Admiration from others" :
-                          selectedChinese.name === "Snake" ? "Deep connections" :
-                          selectedChinese.name === "Horse" ? "Freedom important" :
-                          selectedChinese.name === "Goat" ? "Nurturing needed" :
-                          selectedChinese.name === "Monkey" ? "Playful interactions" :
-                          selectedChinese.name === "Rooster" ? "Direct communication" :
-                          selectedChinese.name === "Dog" ? "Loyalty rewarded" :
-                          "Compassionate exchanges"}
-                        </div>
-                      </li>
-                      <li className="flex">
-                        <div className="bg-purple-100 rounded-full w-6 h-6 flex items-center justify-center mr-3 flex-shrink-0">
-                          <span className="text-purple-600">🏆</span>
-                        </div>
-                        <div>
-                          <span className="font-medium">Career:</span> {selectedChinese.name === "Rat" ? "Resourcefulness shines" :
-                          selectedChinese.name === "Ox" ? "Diligence pays off" :
-                          selectedChinese.name === "Tiger" ? "Leadership opportunities" :
-                          selectedChinese.name === "Rabbit" ? "Diplomacy favored" :
-                          selectedChinese.name === "Dragon" ? "Innovation rewarded" :
-                          selectedChinese.name === "Snake" ? "Strategic planning" :
-                          selectedChinese.name === "Horse" ? "New challenges" :
-                          selectedChinese.name === "Goat" ? "Creative solutions" :
-                          selectedChinese.name === "Monkey" ? "Problem-solving" :
-                          selectedChinese.name === "Rooster" ? "Attention to detail" :
-                          selectedChinese.name === "Dog" ? "Teamwork essential" :
-                          "Service brings rewards"}
-                        </div>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-          )}
-
-          {tab === 2 && (
-            <div>
-              <div className="p-6 border-b border-gray-200">
-                <h3 className="text-2xl font-semibold mb-2">Numeroscope Calculator</h3>
-                <p className="text-gray-600">Enter your birth date to discover your life path number and its meaning</p>
+                <h3 className="text-2xl font-semibold mb-2">Life Path Number Calculator</h3>
+                <p className="text-gray-600">Your Life Path Number is the most important number in your numerology chart, revealing your life's purpose and challenges.</p>
               </div>
               <div className="p-6">
                 <div className="max-w-md mx-auto">
@@ -687,7 +548,7 @@ export default function NumerologyPage() {
               </div>
               {lifePathNumber && numeroscope ? (
                 <div className="p-6 bg-gray-50 border-t border-gray-200">
-                  <h4 className="text-xl font-bold mb-4 text-center">Your Numeroscope Reading</h4>
+                  <h4 className="text-xl font-bold mb-4 text-center">Your Life Path Number: {lifePathNumber}</h4>
                   <div className="max-w-2xl mx-auto">
                     <div className="bg-white rounded-lg shadow-sm p-6 mb-6 border border-purple-100">
                       <div className="text-center mb-4">
@@ -695,7 +556,7 @@ export default function NumerologyPage() {
                           {lifePathNumber}
                         </div>
                       </div>
-                      <h5 className="text-lg font-semibold text-center mb-3 text-purple-700">Life Path Number {lifePathNumber}</h5>
+                      <h5 className="text-lg font-semibold text-center mb-3 text-purple-700">Life Path Number {lifePathNumber} Meaning</h5>
                       <p className="text-gray-700 text-center mb-4">{numeroscope.insight}</p>
                       
                       <div className="grid md:grid-cols-2 gap-6 mt-6">
@@ -717,7 +578,7 @@ export default function NumerologyPage() {
                     </div>
                     
                     <div className="bg-white rounded-lg shadow-sm p-6 border border-gray-200">
-                      <h5 className="text-lg font-semibold mb-3 text-purple-700">Today's Advice for Number {lifePathNumber}</h5>
+                      <h5 className="text-lg font-semibold mb-3 text-purple-700">Today's Advice for Life Path {lifePathNumber}</h5>
                       <p className="text-gray-700 mb-4">
                         {lifePathNumber === 1 ? "Take the lead in a situation where you normally hold back. Your initiative will be rewarded." :
                         lifePathNumber === 2 ? "Your diplomatic skills are especially strong today. Help mediate a conflict." :
@@ -733,33 +594,99 @@ export default function NumerologyPage() {
                         "Your healing energy is especially strong. Focus on global or spiritual service."}
                       </p>
                       <div className="mt-4">
-                        <h6 className="font-semibold mb-2 text-purple-700">Lucky Elements for Today</h6>
-                        <div className="flex flex-wrap gap-3">
-                          <span className="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm">Color: {lifePathNumber === 1 ? "Red" :
-                            lifePathNumber === 2 ? "Orange" :
-                            lifePathNumber === 3 ? "Yellow" :
-                            lifePathNumber === 4 ? "Green" :
-                            lifePathNumber === 5 ? "Blue" :
-                            lifePathNumber === 6 ? "Indigo" :
-                            lifePathNumber === 7 ? "Violet" :
-                            lifePathNumber === 8 ? "Gold" :
-                            lifePathNumber === 9 ? "White" :
-                            lifePathNumber === 11 ? "Silver" :
-                            lifePathNumber === 22 ? "Platinum" :
-                            "Rainbow"}</span>
-                          <span className="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">Stone: {lifePathNumber === 1 ? "Ruby" :
-                            lifePathNumber === 2 ? "Coral" :
-                            lifePathNumber === 3 ? "Topaz" :
-                            lifePathNumber === 4 ? "Emerald" :
-                            lifePathNumber === 5 ? "Sapphire" :
-                            lifePathNumber === 6 ? "Diamond" :
-                            lifePathNumber === 7 ? "Amethyst" :
-                            lifePathNumber === 8 ? "Citrine" :
-                            lifePathNumber === 9 ? "Clear Quartz" :
-                            lifePathNumber === 11 ? "Moonstone" :
-                            lifePathNumber === 22 ? "Lapis Lazuli" :
-                            "Opal"}</span>
-                          <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Number: {lifePathNumber}</span>
+                        <h6 className="font-semibold mb-2 text-purple-700">Compatible Numbers</h6>
+                        <p className="text-gray-700 mb-2">You work well with people whose Life Path Numbers are: {numeroscope.compatibility.join(', ')}</p>
+                        <p className="text-gray-700">Challenges may arise with numbers: {numeroscope.challenges}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ) : (
+                <div className="p-6 bg-gray-50 border-t border-gray-200 text-center">
+                  <p className="text-gray-500">Please enter your date of birth to see your Life Path Number reading.</p>
+                </div>
+              )}
+            </div>
+          )}
+
+          {tab === 1 && (
+            <div>
+              <div className="p-6 border-b border-gray-200">
+                <h3 className="text-2xl font-semibold mb-2">Destiny Number Calculator</h3>
+                <p className="text-gray-600">Your Destiny Number (also called Expression Number) reveals your talents, abilities, and the person you're meant to become.</p>
+              </div>
+              <div className="p-6">
+                <div className="max-w-md mx-auto">
+                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">Your Full Name (at birth)</label>
+                  <input
+                    type="text"
+                    id="name"
+                    value={name}
+                    onChange={e => setName(e.target.value)}
+                    className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
+                    placeholder="Enter your full birth name"
+                    aria-label="Full Name"
+                  />
+                  <p className="mt-2 text-sm text-gray-500">We'll calculate your Destiny Number from your birth name</p>
+                </div>
+              </div>
+              {destinyNumber ? (
+                <div className="p-6 bg-gray-50 border-t border-gray-200">
+                  <h4 className="text-xl font-bold mb-4 text-center">Your Destiny Number: {destinyNumber}</h4>
+                  <div className="max-w-2xl mx-auto">
+                    <div className="bg-white rounded-lg shadow-sm p-6 mb-6 border border-purple-100">
+                      <div className="text-center mb-4">
+                        <div className="w-20 h-20 mx-auto rounded-full bg-purple-100 flex items-center justify-center text-3xl font-bold text-purple-600">
+                          {destinyNumber}
+                        </div>
+                      </div>
+                      <h5 className="text-lg font-semibold text-center mb-3 text-purple-700">Destiny Number {destinyNumber} Meaning</h5>
+                      <p className="text-gray-700 text-center mb-4">
+                        {destinyNumber === 1 ? "Your destiny involves leadership and independence. You're here to pioneer new ideas and stand on your own." :
+                        destinyNumber === 2 ? "Your path involves cooperation and diplomacy. You're meant to bring people together and create harmony." :
+                        destinyNumber === 3 ? "Your destiny is creative self-expression. You're here to inspire others through art, communication, and joy." :
+                        destinyNumber === 4 ? "Your path involves building solid foundations. You're meant to create order and stability in the world." :
+                        destinyNumber === 5 ? "Your destiny involves freedom and change. You're here to experience life fully and adapt to circumstances." :
+                        destinyNumber === 6 ? "Your path involves service and responsibility. You're meant to nurture and care for others." :
+                        destinyNumber === 7 ? "Your destiny involves seeking truth and wisdom. You're here to analyze, study, and understand life's mysteries." :
+                        destinyNumber === 8 ? "Your path involves material mastery. You're meant to achieve success and manage resources effectively." :
+                        destinyNumber === 9 ? "Your destiny involves humanitarian service. You're here to help humanity on a large scale." :
+                        destinyNumber === 11 ? "As a master number, your destiny involves spiritual illumination. You're here to inspire and uplift humanity." :
+                        "As a master number, your destiny involves practical mastery of large-scale projects. You're meant to turn visions into reality."}
+                      </p>
+                      
+                      <div className="grid md:grid-cols-2 gap-6 mt-6">
+                        <div>
+                          <h6 className="font-semibold mb-2 text-purple-700">Natural Talents</h6>
+                          <ul className="list-disc pl-5 space-y-1 text-gray-700">
+                            {destinyNumber === 1 ? ["Leadership", "Innovation", "Courage"] :
+                            destinyNumber === 2 ? ["Diplomacy", "Patience", "Teamwork"] :
+                            destinyNumber === 3 ? ["Creativity", "Communication", "Optimism"] :
+                            destinyNumber === 4 ? ["Organization", "Reliability", "Practicality"] :
+                            destinyNumber === 5 ? ["Adaptability", "Freedom", "Versatility"] :
+                            destinyNumber === 6 ? ["Nurturing", "Responsibility", "Compassion"] :
+                            destinyNumber === 7 ? ["Analysis", "Intuition", "Perfectionism"] :
+                            destinyNumber === 8 ? ["Executive skills", "Ambition", "Financial acumen"] :
+                            destinyNumber === 9 ? ["Humanitarianism", "Artistic talent", "Global thinking"] :
+                            destinyNumber === 11 ? ["Inspiration", "Intuition", "Idealism"] :
+                            ["Vision", "Practicality", "Large-scale thinking"]}
+                          </ul>
+                        </div>
+                        <div>
+                          <h6 className="font-semibold mb-2 text-purple-700">Career Paths</h6>
+                          <ul className="list-disc pl-5 space-y-1 text-gray-700">
+                            {destinyNumber === 1 ? ["Entrepreneur", "Manager", "Inventor"] :
+                            destinyNumber === 2 ? ["Mediator", "Counselor", "Team coordinator"] :
+                            destinyNumber === 3 ? ["Artist", "Writer", "Performer"] :
+                            destinyNumber === 4 ? ["Engineer", "Accountant", "Project manager"] :
+                            destinyNumber === 5 ? ["Sales", "Marketing", "Travel industry"] :
+                            destinyNumber === 6 ? ["Teaching", "Healthcare", "Social work"] :
+                            destinyNumber === 7 ? ["Research", "Science", "Spiritual fields"] :
+                            destinyNumber === 8 ? ["Executive", "Finance", "Law"] :
+                            destinyNumber === 9 ? ["Humanitarian work", "Arts", "Global organizations"] :
+                            destinyNumber === 11 ? ["Spiritual teacher", "Artist", "Visionary"] :
+                            ["Architect", "Large-scale planner", "Master builder"]}
+                          </ul>
                         </div>
                       </div>
                     </div>
@@ -767,7 +694,135 @@ export default function NumerologyPage() {
                 </div>
               ) : (
                 <div className="p-6 bg-gray-50 border-t border-gray-200 text-center">
-                  <p className="text-gray-500">Please enter your date of birth to see your personalized numeroscope reading.</p>
+                  <p className="text-gray-500">Please enter your full birth name to see your Destiny Number reading.</p>
+                </div>
+              )}
+            </div>
+          )}
+
+          {tab === 2 && (
+            <div>
+              <div className="p-6 border-b border-gray-200">
+                <h3 className="text-2xl font-semibold mb-2">Complete Numerology Reading</h3>
+                <p className="text-gray-600">Get a full numerology analysis including Life Path, Destiny, Soul Urge, and Personality numbers.</p>
+              </div>
+              <div className="p-6">
+                <div className="max-w-md mx-auto space-y-4">
+                  <div>
+                    <label htmlFor="full-dob" className="block text-sm font-medium text-gray-700 mb-2">Your Date of Birth</label>
+                    <input
+                      type="date"
+                      id="full-dob"
+                      value={dob}
+                      onChange={e => setDob(e.target.value)}
+                      className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
+                      aria-label="Date of Birth"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="full-name" className="block text-sm font-medium text-gray-700 mb-2">Your Full Name (at birth)</label>
+                    <input
+                      type="text"
+                      id="full-name"
+                      value={name}
+                      onChange={e => setName(e.target.value)}
+                      className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
+                      placeholder="Enter your full birth name"
+                      aria-label="Full Name"
+                    />
+                  </div>
+                </div>
+              </div>
+              {lifePathNumber && destinyNumber ? (
+                <div className="p-6 bg-gray-50 border-t border-gray-200">
+                  <h4 className="text-xl font-bold mb-4 text-center">Your Complete Numerology Reading</h4>
+                  <div className="max-w-2xl mx-auto space-y-6">
+                    <div className="bg-white rounded-lg shadow-sm p-6 border border-purple-100">
+                      <h5 className="text-lg font-semibold mb-3 text-purple-700">Core Numbers</h5>
+                      <div className="grid md:grid-cols-2 gap-6">
+                        <div>
+                          <div className="flex items-center mb-2">
+                            <div className="w-10 h-10 rounded-full bg-purple-100 flex items-center justify-center text-purple-600 font-bold mr-3">
+                              {lifePathNumber}
+                            </div>
+                            <div>
+                              <h6 className="font-semibold">Life Path Number</h6>
+                              <p className="text-sm text-gray-600">Your life's purpose and challenges</p>
+                            </div>
+                          </div>
+                          <p className="text-gray-700 text-sm mt-2">{numeroscope.insight}</p>
+                        </div>
+                        <div>
+                          <div className="flex items-center mb-2">
+                            <div className="w-10 h-10 rounded-full bg-purple-100 flex items-center justify-center text-purple-600 font-bold mr-3">
+                              {destinyNumber}
+                            </div>
+                            <div>
+                              <h6 className="font-semibold">Destiny Number</h6>
+                              <p className="text-sm text-gray-600">Your talents and potential</p>
+                            </div>
+                          </div>
+                          <p className="text-gray-700 text-sm mt-2">
+                            {destinyNumber === 1 ? "Your talents lie in leadership and innovation." :
+                            destinyNumber === 2 ? "Your talents lie in diplomacy and cooperation." :
+                            destinyNumber === 3 ? "Your talents lie in creativity and expression." :
+                            destinyNumber === 4 ? "Your talents lie in organization and practicality." :
+                            destinyNumber === 5 ? "Your talents lie in adaptability and freedom." :
+                            destinyNumber === 6 ? "Your talents lie in nurturing and responsibility." :
+                            destinyNumber === 7 ? "Your talents lie in analysis and intuition." :
+                            destinyNumber === 8 ? "Your talents lie in executive skills and ambition." :
+                            destinyNumber === 9 ? "Your talents lie in humanitarianism and global thinking." :
+                            destinyNumber === 11 ? "Your talents lie in inspiration and spiritual insight." :
+                            "Your talents lie in vision and practical mastery."}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="bg-white rounded-lg shadow-sm p-6 border border-gray-200">
+                      <h5 className="text-lg font-semibold mb-3 text-purple-700">Personal Year Cycle</h5>
+                      <div className="flex items-center mb-4">
+                        <div className="w-14 h-14 rounded-full bg-purple-100 flex items-center justify-center text-purple-600 font-bold text-xl mr-4">
+                          {(new Date().getFullYear() + lifePathNumber) % 9 || 9}
+                        </div>
+                        <div>
+                          <p className="text-gray-700">
+                            You're in a <span className="font-semibold">{(new Date().getFullYear() + lifePathNumber) % 9 || 9} Personal Year</span>, which means:
+                          </p>
+                          <p className="text-gray-700 text-sm mt-1">
+                            {((new Date().getFullYear() + lifePathNumber) % 9 || 9) === 1 ? "A year of new beginnings and fresh starts." :
+                            ((new Date().getFullYear() + lifePathNumber) % 9 || 9) === 2 ? "A year of patience, partnerships, and waiting." :
+                            ((new Date().getFullYear() + lifePathNumber) % 9 || 9) === 3 ? "A year of creativity, socializing, and self-expression." :
+                            ((new Date().getFullYear() + lifePathNumber) % 9 || 9) === 4 ? "A year of hard work, organization, and building foundations." :
+                            ((new Date().getFullYear() + lifePathNumber) % 9 || 9) === 5 ? "A year of change, freedom, and adventure." :
+                            ((new Date().getFullYear() + lifePathNumber) % 9 || 9) === 6 ? "A year of responsibility, family, and service." :
+                            ((new Date().getFullYear() + lifePathNumber) % 9 || 9) === 7 ? "A year of introspection, study, and spiritual growth." :
+                            ((new Date().getFullYear() + lifePathNumber) % 9 || 9) === 8 ? "A year of career advancement, money, and power." :
+                            "A year of completion, humanitarianism, and letting go."}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="bg-white rounded-lg shadow-sm p-6 border border-gray-200">
+                      <h5 className="text-lg font-semibold mb-3 text-purple-700">Numerology Compatibility</h5>
+                      <p className="text-gray-700 mb-4">Based on your numbers, you're most compatible with people who have the following Life Path Numbers:</p>
+                      <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+                        {[1,2,3,4,5,6,7,8,9].map(num => (
+                          <div key={num} className={`p-3 rounded-lg text-center ${numeroscope.compatibility.includes(num) ? "bg-green-100 text-green-800" : "bg-gray-100 text-gray-800"}`}>
+                            <div className="font-bold text-lg">{num}</div>
+                            <div className="text-xs">
+                              {numeroscope.compatibility.includes(num) ? "Highly Compatible" : "Neutral"}
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ) : (
+                <div className="p-6 bg-gray-50 border-t border-gray-200 text-center">
+                  <p className="text-gray-500">Please enter your date of birth and full name to see your complete numerology reading.</p>
                 </div>
               )}
             </div>
@@ -781,7 +836,7 @@ export default function NumerologyPage() {
           <div className="text-center mb-16">
             <h2 className="text-4xl font-extrabold mb-4">Simple Integration Process</h2>
             <p className="text-xl text-purple-200 max-w-3xl mx-auto">
-              Get started with AstroSetuAPI in just a few minutes
+              Get started with AstroSetu Numerology API in just a few minutes
             </p>
           </div>
           <div className="grid md:grid-cols-3 gap-10 text-left">
@@ -799,7 +854,7 @@ export default function NumerologyPage() {
               <div className="pl-12">
                 <h3 className="text-2xl font-bold mb-3">Integrate with Your App</h3>
                 <p className="text-purple-200">
-                  Use our well-documented REST API or SDKs to fetch horoscope data. We provide code samples in JavaScript, Python, PHP, and more.
+                  Use our well-documented REST API or SDKs to fetch numerology data. We provide code samples in JavaScript, Python, PHP, and more.
                 </p>
               </div>
             </div>
@@ -808,7 +863,7 @@ export default function NumerologyPage() {
               <div className="pl-12">
                 <h3 className="text-2xl font-bold mb-3">Delight Your Users</h3>
                 <p className="text-purple-200">
-                  Show personalized astrology content to keep users engaged. Our daily updated predictions encourage regular visits to your platform.
+                  Show personalized numerology insights to keep users engaged. Our calculations provide deep, meaningful content for your platform.
                 </p>
               </div>
             </div>
@@ -821,15 +876,13 @@ export default function NumerologyPage() {
         </div>
       </section>
 
-      
-
       {/* Testimonials Section */}
       <section className="bg-gray-50 py-20">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-extrabold mb-4">Trusted by Developers Worldwide</h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Here's what our customers say about AstroSetuAPI
+              Here's what our customers say about AstroSetu Numerology API
             </p>
           </div>
           <div className="grid md:grid-cols-3 gap-8">
@@ -838,12 +891,12 @@ export default function NumerologyPage() {
                 <div className="w-12 h-12 rounded-full bg-purple-100 flex items-center justify-center text-purple-600 font-bold mr-4">PS</div>
                 <div>
                   <h4 className="font-bold">Priya Sharma</h4>
-                  <p className="text-gray-600 text-sm">CTO, AstroApp</p>
+                  <p className="text-gray-600 text-sm">CTO, NumerologyApp</p>
                 </div>
               </div>
               <div className="text-yellow-500 mb-3">★★★★★</div>
               <p className="text-gray-700">
-                "We switched to AstroSetuAPI after struggling with unreliable predictions from another provider. The accuracy and speed are exceptional, and our user engagement increased by 40% after the switch."
+                "We switched to AstroSetu Numerology API after struggling with incomplete calculations from another provider. The accuracy and depth of interpretations are exceptional, and our user engagement increased by 40% after the switch."
               </p>
             </div>
             <div className="bg-white p-8 rounded-xl shadow-md border border-gray-200">
@@ -851,12 +904,12 @@ export default function NumerologyPage() {
                 <div className="w-12 h-12 rounded-full bg-purple-100 flex items-center justify-center text-purple-600 font-bold mr-4">RK</div>
                 <div>
                   <h4 className="font-bold">Ramesh Kumar</h4>
-                  <p className="text-gray-600 text-sm">Developer, Wellness360</p>
+                  <p className="text-gray-600 text-sm">Developer, LifePathAI</p>
                 </div>
               </div>
               <div className="text-yellow-500 mb-3">★★★★★</div>
               <p className="text-gray-700">
-                "The documentation is the best I've seen for any API. We integrated the Chinese zodiac features in just a few hours. The daily webhook updates save us hundreds of API calls."
+                "The documentation is the best I've seen for any API. We integrated the Chaldean numerology features in just a few hours. The webhook updates for personal cycles save us hundreds of API calls."
               </p>
             </div>
             <div className="bg-white p-8 rounded-xl shadow-md border border-gray-200">
@@ -864,12 +917,12 @@ export default function NumerologyPage() {
                 <div className="w-12 h-12 rounded-full bg-purple-100 flex items-center justify-center text-purple-600 font-bold mr-4">AM</div>
                 <div>
                   <h4 className="font-bold">Anjali Mehta</h4>
-                  <p className="text-gray-600 text-sm">Founder, SpiritualGuide</p>
+                  <p className="text-gray-600 text-sm">Founder, DestinyMatch</p>
                 </div>
               </div>
               <div className="text-yellow-500 mb-3">★★★★☆</div>
               <p className="text-gray-700">
-                "Our users love the numeroscope feature - it adds a unique dimension to our wellness app. The only reason I didn't give 5 stars is that I'd love to see more numerology calculations added."
+                "Our users love the numerology compatibility feature - it adds a scientific dimension to our matchmaking algorithm. The only reason I didn't give 5 stars is that I'd love to see more advanced relationship analysis."
               </p>
             </div>
           </div>
@@ -882,7 +935,7 @@ export default function NumerologyPage() {
           <div className="text-center mb-16">
             <h2 className="text-4xl font-extrabold mb-4">Powerful Use Cases</h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Discover how AstroSetuAPI can enhance your application
+              Discover how AstroSetu Numerology API can enhance your application
             </p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -894,7 +947,7 @@ export default function NumerologyPage() {
               </div>
               <h3 className="text-xl font-bold mb-3">Mobile Apps</h3>
               <p className="text-gray-700">
-                Add daily horoscope features to your lifestyle or dating app to increase user engagement and retention.
+                Add daily numerology insights to your lifestyle or self-improvement app to increase user engagement and retention.
               </p>
             </div>
             <div className="bg-white p-6 rounded-xl shadow-md border border-gray-200">
@@ -903,9 +956,9 @@ export default function NumerologyPage() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
                 </svg>
               </div>
-              <h3 className="text-xl font-bold mb-3">News Portals</h3>
+              <h3 className="text-xl font-bold mb-3">Dating Platforms</h3>
               <p className="text-gray-700">
-                Keep visitors coming back with daily updated zodiac predictions alongside your regular content.
+                Offer numerology compatibility insights to help users find better matches based on core number harmony.
               </p>
             </div>
             <div className="bg-white p-6 rounded-xl shadow-md border border-gray-200">
@@ -914,9 +967,9 @@ export default function NumerologyPage() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
                 </svg>
               </div>
-              <h3 className="text-xl font-bold mb-3">Dating Platforms</h3>
+              <h3 className="text-xl font-bold mb-3">Team Building</h3>
               <p className="text-gray-700">
-                Offer zodiac compatibility insights to help users find better matches and increase interaction.
+                Analyze team dynamics and optimize collaboration based on numerology compatibility between members.
               </p>
             </div>
             <div className="bg-white p-6 rounded-xl shadow-md border border-gray-200">
@@ -927,7 +980,7 @@ export default function NumerologyPage() {
               </div>
               <h3 className="text-xl font-bold mb-3">Wellness Apps</h3>
               <p className="text-gray-700">
-                Combine astrology with health recommendations for a holistic approach to wellbeing.
+                Combine numerology with health recommendations for a holistic approach to wellbeing based on personal cycles.
               </p>
             </div>
             <div className="bg-white p-6 rounded-xl shadow-md border border-gray-200">
@@ -938,7 +991,7 @@ export default function NumerologyPage() {
               </div>
               <h3 className="text-xl font-bold mb-3">Event Planning</h3>
               <p className="text-gray-700">
-                Use Panchang data to suggest auspicious dates for weddings, business launches, and other important events.
+                Use personal year cycles to suggest optimal timing for important life events like weddings or business launches.
               </p>
             </div>
             <div className="bg-white p-6 rounded-xl shadow-md border border-gray-200">
@@ -949,7 +1002,7 @@ export default function NumerologyPage() {
               </div>
               <h3 className="text-xl font-bold mb-3">Content Platforms</h3>
               <p className="text-gray-700">
-                Generate personalized astrology content at scale for blogs, social media, and newsletters.
+                Generate personalized numerology content at scale for blogs, social media, and newsletters.
               </p>
             </div>
           </div>
@@ -961,7 +1014,7 @@ export default function NumerologyPage() {
         <div className="text-center mb-16">
           <h2 className="text-4xl font-extrabold mb-4">Frequently Asked Questions</h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Everything you need to know about AstroSetuAPI
+            Everything you need to know about AstroSetu Numerology API
           </p>
         </div>
         <div className="space-y-4">
@@ -1000,16 +1053,16 @@ export default function NumerologyPage() {
       {/* CTA Section */}
       <section className="bg-gradient-to-r from-purple-600 to-indigo-600 text-white py-20">
         <div className="max-w-4xl mx-auto px-6 text-center">
-          <h2 className="text-4xl font-extrabold mb-6">Ready to Integrate Astrology into Your App?</h2>
+          <h2 className="text-4xl font-extrabold mb-6">Ready to Integrate Numerology into Your App?</h2>
           <p className="text-xl text-purple-100 mb-8">
-            Join thousands of developers using AstroSetuAPI to deliver engaging astrology content to their users.
+            Join thousands of developers using AstroSetu Numerology API to deliver meaningful numerological insights to their users.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <Link to="/pricing" className="inline-block bg-white hover:bg-gray-100 text-purple-700 font-semibold px-8 py-4 rounded-lg shadow-lg transition transform hover:-translate-y-1">
               Get Started for Free
             </Link>
-            <Link ti="#demo" className="inline-block bg-transparent hover:bg-purple-700 text-white font-semibold px-8 py-4 rounded-lg border-2 border-white transition transform hover:-translate-y-1">
-              Try Live Demo
+            <Link to="#demo" className="inline-block bg-transparent hover:bg-purple-700 text-white font-semibold px-8 py-4 rounded-lg border-2 border-white transition transform hover:-translate-y-1">
+              Try Numerology Calculator
             </Link>
           </div>
         </div>

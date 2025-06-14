@@ -50,7 +50,8 @@ const solutions = [
     { label: 'Indian Astrology', href: '/vedic-astrology' },
     { label: 'Western Astrology', href: '/western-astrology' },
     { label: 'Numerology', href: '/numerology' },
-    { label: 'Lifesyle', href: '/apis/astrology' },
+    { label: 'Lifesyle', href: '/lifestyle' },
+    { label: 'Indian Festival', href: '/indianfestival' },
   ];
 
 export default function HomePage(){

@@ -32,31 +32,31 @@ const chineseZodiacs = [
   { name: "Pig", icon: "🐖", years: "2031, 2019, 2007" }
 ];
 
-// Enhanced FAQ data with SEO-rich content
+// Enhanced FAQ data with Vedic astrology focus
 const faqs = [
   {
-    q: "What is AstroSetuAPI and how does it work?",
-    a: "AstroSetuAPI is a comprehensive astrology API platform providing accurate daily horoscopes, Chinese zodiac predictions, numeroscope insights, and Panchang data. Our RESTful API delivers JSON responses that developers can easily integrate into websites, mobile apps, and digital platforms to offer personalized astrological content to users."
+    q: "What Vedic astrology services does your API provide?",
+    a: "Our Vedic Astrology API offers comprehensive services including daily Panchang calculations, Kundali generation with 40+ parameters, Kundali matching (Ashtakoot and Dashakoot methods), planetary transit predictions, Dasha periods, and detailed horoscope analysis based on precise birth details."
   },
   {
-    q: "How accurate are your horoscope predictions?",
-    a: "Our predictions are generated using time-tested astrological calculations combined with modern algorithms. We source data from reputable astrological databases and update our predictions daily based on planetary movements. While astrology is interpretive by nature, we strive for consistency and relevance in all our readings."
+    q: "How accurate are your Vedic astrology calculations?",
+    a: "Our calculations follow authentic Vedic astrology principles using the Lahiri Ayanamsa and precise astronomical algorithms. We calculate planetary positions with NASA-grade accuracy (within 0.01 arc seconds) and follow traditional methods for house division (Placidus, Whole Sign, and Equal House systems available)."
   },
   {
-    q: "What makes AstroSetuAPI better than other astrology APIs?",
-    a: "AstroSetuAPI stands out with its all-in-one solution (Western, Chinese, Numerology, and Panchang), developer-friendly documentation, 99.9% uptime, and affordable pricing. Our API responses are optimized for speed (average 200ms response time) and we offer more detailed predictions than competitors."
+    q: "What makes your Vedic astrology API unique?",
+    a: "Unlike basic astrology APIs, we provide: 1) Authentic Vedic calculations with multiple ayanamsa options 2) Detailed Kundali reports with 40+ parameters 3) Comprehensive matching reports with multiple compatibility systems 4) Support for multiple house division systems 5) Detailed planetary transit analysis with remedies."
   },
   {
-    q: "Can I use AstroSetuAPI for commercial applications?",
-    a: "Absolutely! Many businesses use our API to power astrology features in their apps, websites, and digital products. Our Business plan includes commercial rights and white-label options. Check our pricing page for details on commercial usage limits."
+    q: "Can I use your API for Kundali matching in matrimonial apps?",
+    a: "Yes! Our API is perfect for matrimonial services, offering detailed Ashtakoot (36-point) and Dashakoot (10-point) matching systems. We provide percentage compatibility scores, dosha analysis (Manglik, Nadi, Bhakoot), and detailed interpretation of planetary influences on marriage compatibility."
   },
   {
-    q: "How often is your data updated?",
-    a: "All horoscope and numeroscope data is refreshed daily at midnight UTC. Chinese zodiac predictions update with the lunar calendar, and Panchang data follows traditional Hindu calendrical calculations for accuracy."
+    q: "Do you support different ayanamsa calculations?",
+    a: "Yes, our API supports multiple ayanamsa calculations including Lahiri (Chitrapaksha), Raman, KP, and Yukteshwar. You can specify the ayanamsa method in your API request to get calculations according to different Vedic traditions."
   },
   {
-    q: "Do you offer support for API integration?",
-    a: "Yes! We provide comprehensive documentation, code samples in multiple languages (JavaScript, Python, PHP, etc.), and dedicated support for Pro and Business plan users. Our average response time for technical queries is under 2 hours during business days."
+    q: "What planetary data do you provide in Kundali reports?",
+    a: "Our Kundali reports include: planetary positions with exact degrees, nakshatras and padas, conjunctions, aspects, planetary strengths (Shadbala), Vargas (divisional charts), Dasha periods, yogas, and detailed interpretations for each placement."
   }
 ];
 
@@ -93,7 +93,6 @@ export default function VedicAstrologyPage() {
   const [selectedChinese, setSelectedChinese] = useState(chineseZodiacs[0]);
   const [dob, setDob] = useState("");
   const [faqOpenIndex, setFaqOpenIndex] = useState(null);
-
 
   // Numerology calculation
   const calculateLifePathNumber = (dob) => {
@@ -177,38 +176,40 @@ export default function VedicAstrologyPage() {
 
   return (
     <div className="font-sans text-gray-900 bg-gradient-to-br from-white to-indigo-50 min-h-screen">
-      
-
-      {/* Hero Section with SEO-rich content */}
+      {/* Hero Section with Vedic astrology focus */}
       <section className="max-w-7xl mx-auto px-6 py-24 text-center">
         <div className="max-w-4xl mx-auto">
           <h1 className="text-5xl md:text-6xl font-extrabold mb-6 leading-tight">
-            Premium <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-indigo-600">Astrology API</span> for Developers
+            Authentic <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-indigo-600">Vedic Astrology API</span> for Developers
           </h1>
           <p className="text-xl text-gray-700 mb-8">
-            Integrate accurate daily horoscopes, Chinese zodiac predictions, numerology insights, and Panchang data into your apps and websites with our developer-friendly API.
+            Integrate precise Vedic astrology calculations including Kundali generation, Panchang data, horoscope matching, and planetary transit predictions into your applications with our developer-friendly API.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <Link to="/pricing" className="inline-block bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white font-semibold px-8 py-4 rounded-lg shadow-lg transition transform hover:-translate-y-1">
-              Get Started - Free Trial
+              Get API Key - Free Trial
             </Link>
             <Link href="#demo" className="inline-block bg-white hover:bg-gray-100 text-gray-800 font-semibold px-8 py-4 rounded-lg shadow-md border border-gray-200 transition transform hover:-translate-y-1">
-              Live Demo
+              Live Vedic Calculations
             </Link>
           </div>
         </div>
         <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
           <div className="bg-white p-4 rounded-xl shadow-md border border-gray-100">
-            <div className="text-3xl mb-2">♈</div>
-            <h3 className="font-bold">Western Zodiac</h3>
+            <div className="text-3xl mb-2">📜</div>
+            <h3 className="font-bold">Kundali API</h3>
           </div>
           <div className="bg-white p-4 rounded-xl shadow-md border border-gray-100">
-            <div className="text-3xl mb-2">🐉</div>
-            <h3 className="font-bold">Chinese Zodiac</h3>
+            <div className="text-3xl mb-2">💍</div>
+            <h3 className="font-bold">Kundali Matching</h3>
           </div>
           <div className="bg-white p-4 rounded-xl shadow-md border border-gray-100">
-            <div className="text-3xl mb-2">🔢</div>
-            <h3 className="font-bold">Numeroscope</h3>
+            <div className="text-3xl mb-2">📅</div>
+            <h3 className="font-bold">Panchang API</h3>
+          </div>
+          <div className="bg-white p-4 rounded-xl shadow-md border border-gray-100">
+            <div className="text-3xl mb-2">🪐</div>
+            <h3 className="font-bold">Planetary Transit</h3>
           </div>
         </div>
       </section>
@@ -216,169 +217,198 @@ export default function VedicAstrologyPage() {
       {/* Trust Indicators */}
       <div className="bg-gray-100 py-8">
         <div className="max-w-7xl mx-auto px-6">
-          <p className="text-center text-gray-600 mb-6">Trusted by developers worldwide</p>
+          <p className="text-center text-gray-600 mb-6">Trusted by astrology platforms worldwide</p>
           <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-70">
-            <div className="text-xl font-bold text-gray-700">TechStart Inc.</div>
-            <div className="text-xl font-bold text-gray-700">AstroApp</div>
-            <div className="text-xl font-bold text-gray-700">Wellness360</div>
-            <div className="text-xl font-bold text-gray-700">SpiritualGuide</div>
-            <div className="text-xl font-bold text-gray-700">ZodiacMedia</div>
+            <div className="text-xl font-bold text-gray-700">JyotishApp</div>
+            <div className="text-xl font-bold text-gray-700">MatrimonyMatch</div>
+            <div className="text-xl font-bold text-gray-700">VedicInsights</div>
+            <div className="text-xl font-bold text-gray-700">AstroSage</div>
+            <div className="text-xl font-bold text-gray-700">Kundali360</div>
           </div>
         </div>
       </div>
 
-      {/* Features Section with SEO keywords */}
+      {/* Features Section with Vedic astrology keywords */}
       <section id="features" className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-extrabold mb-4">Powerful Astrology API Features</h2>
+            <h2 className="text-4xl font-extrabold mb-4">Comprehensive Vedic Astrology API Features</h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Everything you need to integrate astrology into your applications
+              Everything you need to integrate authentic Vedic astrology into your applications
             </p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-12">
             <div className="bg-gradient-to-b from-purple-50 to-white p-8 rounded-xl border border-purple-100 shadow-sm">
               <div className="w-14 h-14 bg-purple-100 rounded-lg flex items-center justify-center mb-6">
-                <span className="text-2xl">♈</span>
+                <span className="text-2xl">📜</span>
               </div>
-              <h3 className="text-2xl font-bold mb-4">Western Horoscope API</h3>
+              <h3 className="text-2xl font-bold mb-4">Kundali Generation API</h3>
               <p className="text-gray-700 mb-4">
-                Get daily, weekly, and monthly horoscopes for all 12 zodiac signs with detailed predictions for love, career, health, and more.
+                Generate detailed birth charts with 40+ parameters including planetary positions, nakshatras, divisional charts, yogas, and Dasha periods based on precise birth details.
               </p>
               <ul className="space-y-2 text-gray-600">
                 <li className="flex items-start">
                   <svg className="w-4 h-4 text-purple-500 mr-2 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path>
                   </svg>
-                  <span>Sun sign predictions</span>
+                  <span>Detailed planetary positions with degrees</span>
                 </li>
                 <li className="flex items-start">
                   <svg className="w-4 h-4 text-purple-500 mr-2 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path>
                   </svg>
-                  <span>Compatibility reports</span>
+                  <span>Nakshatra and pada calculations</span>
                 </li>
                 <li className="flex items-start">
                   <svg className="w-4 h-4 text-purple-500 mr-2 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path>
                   </svg>
-                  <span>Planetary transit insights</span>
+                  <span>16 divisional charts (Vargas)</span>
                 </li>
               </ul>
             </div>
             <div className="bg-gradient-to-b from-purple-50 to-white p-8 rounded-xl border border-purple-100 shadow-sm">
               <div className="w-14 h-14 bg-purple-100 rounded-lg flex items-center justify-center mb-6">
-                <span className="text-2xl">🐉</span>
+                <span className="text-2xl">💍</span>
               </div>
-              <h3 className="text-2xl font-bold mb-4">Chinese Zodiac API</h3>
+              <h3 className="text-2xl font-bold mb-4">Kundali Matching API</h3>
               <p className="text-gray-700 mb-4">
-                Access detailed Chinese zodiac predictions based on birth year, including personality traits, compatibility, and yearly forecasts.
+                Comprehensive compatibility analysis with Ashtakoot (36-point) and Dashakoot (10-point) matching systems, dosha analysis, and detailed interpretation of planetary influences.
               </p>
               <ul className="space-y-2 text-gray-600">
                 <li className="flex items-start">
                   <svg className="w-4 h-4 text-purple-500 mr-2 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path>
                   </svg>
-                  <span>12 animal signs</span>
+                  <span>Ashtakoot and Dashakoot matching</span>
                 </li>
                 <li className="flex items-start">
                   <svg className="w-4 h-4 text-purple-500 mr-2 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path>
                   </svg>
-                  <span>Five elements theory</span>
+                  <span>Manglik, Nadi, Bhakoot analysis</span>
                 </li>
                 <li className="flex items-start">
                   <svg className="w-4 h-4 text-purple-500 mr-2 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path>
                   </svg>
-                  <span>Yearly fortune predictions</span>
+                  <span>Detailed compatibility reports</span>
                 </li>
               </ul>
             </div>
             <div className="bg-gradient-to-b from-purple-50 to-white p-8 rounded-xl border border-purple-100 shadow-sm">
               <div className="w-14 h-14 bg-purple-100 rounded-lg flex items-center justify-center mb-6">
-                <span className="text-2xl">🔢</span>
+                <span className="text-2xl">📅</span>
               </div>
-              <h3 className="text-2xl font-bold mb-4">Numeroscope API</h3>
+              <h3 className="text-2xl font-bold mb-4">Panchang API</h3>
               <p className="text-gray-700 mb-4">
-                Calculate life path numbers, destiny numbers, and other numerology insights with detailed interpretations.
+                Get accurate daily Panchang data including tithi, nakshatra, yoga, karana, sunrise/sunset timings, and auspicious/inauspicious muhurtas for any date and location.
               </p>
               <ul className="space-y-2 text-gray-600">
                 <li className="flex items-start">
                   <svg className="w-4 h-4 text-purple-500 mr-2 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path>
                   </svg>
-                  <span>Life path number</span>
+                  <span>Tithi, Nakshatra, Yoga, Karana</span>
                 </li>
                 <li className="flex items-start">
                   <svg className="w-4 h-4 text-purple-500 mr-2 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path>
                   </svg>
-                  <span>Destiny number</span>
+                  <span>Auspicious Muhurta timings</span>
                 </li>
                 <li className="flex items-start">
                   <svg className="w-4 h-4 text-purple-500 mr-2 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path>
                   </svg>
-                  <span>Personal year cycles</span>
+                  <span>Hindu festival dates</span>
                 </li>
               </ul>
             </div>
             <div className="bg-gradient-to-b from-purple-50 to-white p-8 rounded-xl border border-purple-100 shadow-sm">
               <div className="w-14 h-14 bg-purple-100 rounded-lg flex items-center justify-center mb-6">
-                <span className="text-2xl">⚡</span>
+                <span className="text-2xl">🪐</span>
               </div>
-              <h3 className="text-2xl font-bold mb-4">High Performance</h3>
+              <h3 className="text-2xl font-bold mb-4">Planetary Transit API</h3>
               <p className="text-gray-700 mb-4">
-                Our API is built for speed and reliability, with global CDN distribution and 99.9% uptime SLA.
+                Track planetary movements and get predictions for how transits affect different moon signs, including retrograde periods, planetary aspects, and conjunctions.
               </p>
               <ul className="space-y-2 text-gray-600">
                 <li className="flex items-start">
                   <svg className="w-4 h-4 text-purple-500 mr-2 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path>
                   </svg>
-                  <span>200ms average response time</span>
+                  <span>Current planetary positions</span>
                 </li>
                 <li className="flex items-start">
                   <svg className="w-4 h-4 text-purple-500 mr-2 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path>
                   </svg>
-                  <span>99.9% uptime SLA</span>
+                  <span>Retrograde period alerts</span>
                 </li>
                 <li className="flex items-start">
                   <svg className="w-4 h-4 text-purple-500 mr-2 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path>
                   </svg>
-                  <span>Global CDN distribution</span>
+                  <span>Transit predictions by sign</span>
                 </li>
               </ul>
             </div>
             <div className="bg-gradient-to-b from-purple-50 to-white p-8 rounded-xl border border-purple-100 shadow-sm">
               <div className="w-14 h-14 bg-purple-100 rounded-lg flex items-center justify-center mb-6">
-                <span className="text-2xl">🛠️</span>
+                <span className="text-2xl">⏳</span>
               </div>
-              <h3 className="text-2xl font-bold mb-4">Developer Friendly</h3>
+              <h3 className="text-2xl font-bold mb-4">Dasha & Bhukti API</h3>
               <p className="text-gray-700 mb-4">
-                Easy integration with comprehensive documentation and support for all major platforms.
+                Calculate Vimshottari Dasha periods with sub-periods (bhuktis) and get interpretations for how these planetary periods influence different areas of life.
               </p>
               <ul className="space-y-2 text-gray-600">
                 <li className="flex items-start">
                   <svg className="w-4 h-4 text-purple-500 mr-2 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path>
                   </svg>
-                  <span>RESTful JSON API</span>
+                  <span>Vimshottari Dasha calculations</span>
                 </li>
                 <li className="flex items-start">
                   <svg className="w-4 h-4 text-purple-500 mr-2 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path>
                   </svg>
-                  <span>SDKs for major languages</span>
+                  <span>Current and upcoming periods</span>
                 </li>
                 <li className="flex items-start">
                   <svg className="w-4 h-4 text-purple-500 mr-2 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path>
                   </svg>
-                  <span>Webhooks support</span>
+                  <span>Detailed period interpretations</span>
+                </li>
+              </ul>
+            </div>
+            <div className="bg-gradient-to-b from-purple-50 to-white p-8 rounded-xl border border-purple-100 shadow-sm">
+              <div className="w-14 h-14 bg-purple-100 rounded-lg flex items-center justify-center mb-6">
+                <span className="text-2xl">🔮</span>
+              </div>
+              <h3 className="text-2xl font-bold mb-4">Remedial Astrology API</h3>
+              <p className="text-gray-700 mb-4">
+                Get personalized remedial measures including gemstone recommendations, mantras, yantras, and rituals based on planetary positions and doshas in the birth chart.
+              </p>
+              <ul className="space-y-2 text-gray-600">
+                <li className="flex items-start">
+                  <svg className="w-4 h-4 text-purple-500 mr-2 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path>
+                  </svg>
+                  <span>Gemstone recommendations</span>
+                </li>
+                <li className="flex items-start">
+                  <svg className="w-4 h-4 text-purple-500 mr-2 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path>
+                  </svg>
+                  <span>Mantras and yantras</span>
+                </li>
+                <li className="flex items-start">
+                  <svg className="w-4 h-4 text-purple-500 mr-2 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path>
+                  </svg>
+                  <span>Rituals and donations</span>
                 </li>
               </ul>
             </div>
@@ -402,29 +432,75 @@ export default function VedicAstrologyPage() {
                 <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
                 <div className="w-3 h-3 rounded-full bg-green-500"></div>
               </div>
-              <div className="text-sm text-gray-400">GET /api/v1/horoscope/daily?sign=aries</div>
+              <div className="text-sm text-gray-400">GET /api/v1/kundali?dob=1990-05-15&tob=13:30&lat=28.6139&lon=77.2090</div>
             </div>
             <div className="p-6 overflow-x-auto">
               <pre className="text-green-400 text-sm">
                 {`{
   "success": true,
   "data": {
-    "date": "2023-11-15",
-    "sign": "Aries",
-    "horoscope": {
-      "love": "Today brings romantic opportunities...",
-      "career": "A project you've been working on...",
-      "health": "Pay attention to your energy levels...",
-      "luck": "Lucky number: 7, Color: Red"
+    "basic_info": {
+      "birth_date": "1990-05-15",
+      "birth_time": "13:30:00",
+      "birth_place": "New Delhi, India",
+      "timezone": "IST",
+      "sun_sign": "Taurus",
+      "moon_sign": "Scorpio",
+      "ascendant": "Libra"
     },
-    "compatibility": {
-      "best": "Leo",
-      "good": ["Sagittarius", "Gemini"],
-      "challenging": "Cancer"
+    "planetary_positions": [
+      {
+        "planet": "Sun",
+        "sign": "Taurus",
+        "degree": 1.2345,
+        "nakshatra": "Krittika",
+        "pada": 2,
+        "house": 10,
+        "retrograde": false
+      },
+      // Other planets...
+    ],
+    "dasha_periods": {
+      "current": {
+        "major": "Moon",
+        "start": "2020-01-01",
+        "end": "2030-01-01",
+        "sub_periods": [
+          {
+            "planet": "Mars",
+            "start": "2023-05-15",
+            "end": "2024-02-15",
+            "interpretation": "A period of increased energy and initiative..."
+          }
+        ]
+      }
     },
-    "planetary": {
-      "moon_phase": "Waxing Crescent",
-      "current_transits": "Mars in Gemini brings..."
+    "yogas": [
+      {
+        "name": "Gajakesari Yoga",
+        "description": "Provides wisdom, wealth and happiness..."
+      }
+    ],
+    "shadbala": {
+      "total": 7.89,
+      "breakdown": {
+        "sthana_bala": 1.23,
+        "dik_bala": 0.45,
+        // Other balas...
+      }
+    },
+    "divisional_charts": {
+      "navamsa": {
+        "ascendant": "Aries",
+        "planets": [
+          {
+            "planet": "Sun",
+            "sign": "Leo",
+            "house": 5
+          }
+        ]
+      }
+      // Other divisional charts...
     }
   }
 }`}
@@ -436,9 +512,9 @@ export default function VedicAstrologyPage() {
 
       {/* Live Demo Section */}
       <section id="demo" className="max-w-4xl mx-auto px-6 py-20">
-        <h2 className="text-4xl font-extrabold text-center mb-4">Interactive Demo</h2>
+        <h2 className="text-4xl font-extrabold text-center mb-4">Interactive Vedic Astrology Demo</h2>
         <p className="text-xl text-gray-600 text-center mb-12 max-w-3xl mx-auto">
-          Try our astrology APIs right in your browser. See how easy it is to get personalized predictions.
+          Try our Vedic astrology calculations right in your browser. See how easy it is to get authentic astrological insights.
         </p>
         
         <Tabs 
@@ -449,9 +525,9 @@ export default function VedicAstrologyPage() {
           TabIndicatorProps={{ style: { background: '#7c3aed', height: '4px' } }}
           textColor="inherit"
         >
-          <Tab label={<span className="font-semibold">Western Horoscope</span>} />
-          <Tab label={<span className="font-semibold">Chinese Zodiac</span>} />
-          <Tab label={<span className="font-semibold">Numeroscope</span>} />
+          <Tab label={<span className="font-semibold">Kundali</span>} />
+          <Tab label={<span className="font-semibold">Kundli Matching</span>} />
+          <Tab label={<span className="font-semibold">Panchang</span>} />
         </Tabs>
 
         <div className="bg-white rounded-xl shadow-xl overflow-hidden border border-gray-200">
@@ -781,7 +857,7 @@ export default function VedicAstrologyPage() {
           <div className="text-center mb-16">
             <h2 className="text-4xl font-extrabold mb-4">Simple Integration Process</h2>
             <p className="text-xl text-purple-200 max-w-3xl mx-auto">
-              Get started with AstroSetuAPI in just a few minutes
+              Get started with our Vedic Astrology API in just a few minutes
             </p>
           </div>
           <div className="grid md:grid-cols-3 gap-10 text-left">
@@ -799,16 +875,16 @@ export default function VedicAstrologyPage() {
               <div className="pl-12">
                 <h3 className="text-2xl font-bold mb-3">Integrate with Your App</h3>
                 <p className="text-purple-200">
-                  Use our well-documented REST API or SDKs to fetch horoscope data. We provide code samples in JavaScript, Python, PHP, and more.
+                  Use our well-documented REST API or SDKs to fetch Vedic astrology data. We provide code samples in JavaScript, Python, PHP, and more.
                 </p>
               </div>
             </div>
             <div className="relative">
               <div className="absolute -left-2 top-0 w-10 h-10 bg-purple-500 rounded-full flex items-center justify-center text-white font-bold z-10">3</div>
               <div className="pl-12">
-                <h3 className="text-2xl font-bold mb-3">Delight Your Users</h3>
+                <h3 className="text-2xl font-bold mb-3">Deliver Authentic Insights</h3>
                 <p className="text-purple-200">
-                  Show personalized astrology content to keep users engaged. Our daily updated predictions encourage regular visits to your platform.
+                  Show accurate Vedic astrology content including Kundali reports, matching scores, and Panchang data to your users.
                 </p>
               </div>
             </div>
@@ -821,15 +897,13 @@ export default function VedicAstrologyPage() {
         </div>
       </section>
 
-      
-
       {/* Testimonials Section */}
       <section className="bg-gray-50 py-20">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-extrabold mb-4">Trusted by Developers Worldwide</h2>
+            <h2 className="text-4xl font-extrabold mb-4">Trusted by Astrology Platforms Worldwide</h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Here's what our customers say about AstroSetuAPI
+              Here's what our customers say about our Vedic Astrology API
             </p>
           </div>
           <div className="grid md:grid-cols-3 gap-8">
@@ -838,12 +912,12 @@ export default function VedicAstrologyPage() {
                 <div className="w-12 h-12 rounded-full bg-purple-100 flex items-center justify-center text-purple-600 font-bold mr-4">PS</div>
                 <div>
                   <h4 className="font-bold">Priya Sharma</h4>
-                  <p className="text-gray-600 text-sm">CTO, AstroApp</p>
+                  <p className="text-gray-600 text-sm">CTO, JyotishApp</p>
                 </div>
               </div>
               <div className="text-yellow-500 mb-3">★★★★★</div>
               <p className="text-gray-700">
-                "We switched to AstroSetuAPI after struggling with unreliable predictions from another provider. The accuracy and speed are exceptional, and our user engagement increased by 40% after the switch."
+                "We switched to this API after struggling with inaccurate calculations from another provider. The Vedic astrology calculations are mathematically precise and our user engagement increased by 40% after the switch."
               </p>
             </div>
             <div className="bg-white p-8 rounded-xl shadow-md border border-gray-200">
@@ -851,12 +925,12 @@ export default function VedicAstrologyPage() {
                 <div className="w-12 h-12 rounded-full bg-purple-100 flex items-center justify-center text-purple-600 font-bold mr-4">RK</div>
                 <div>
                   <h4 className="font-bold">Ramesh Kumar</h4>
-                  <p className="text-gray-600 text-sm">Developer, Wellness360</p>
+                  <p className="text-gray-600 text-sm">Developer, MatrimonyMatch</p>
                 </div>
               </div>
               <div className="text-yellow-500 mb-3">★★★★★</div>
               <p className="text-gray-700">
-                "The documentation is the best I've seen for any API. We integrated the Chinese zodiac features in just a few hours. The daily webhook updates save us hundreds of API calls."
+                "The Kundali matching API saved us months of development time. We integrated the Ashtakoot and Dashakoot matching in just a few days. The detailed compatibility reports have significantly improved our match success rates."
               </p>
             </div>
             <div className="bg-white p-8 rounded-xl shadow-md border border-gray-200">
@@ -864,12 +938,12 @@ export default function VedicAstrologyPage() {
                 <div className="w-12 h-12 rounded-full bg-purple-100 flex items-center justify-center text-purple-600 font-bold mr-4">AM</div>
                 <div>
                   <h4 className="font-bold">Anjali Mehta</h4>
-                  <p className="text-gray-600 text-sm">Founder, SpiritualGuide</p>
+                  <p className="text-gray-600 text-sm">Founder, VedicInsights</p>
                 </div>
               </div>
               <div className="text-yellow-500 mb-3">★★★★☆</div>
               <p className="text-gray-700">
-                "Our users love the numeroscope feature - it adds a unique dimension to our wellness app. The only reason I didn't give 5 stars is that I'd love to see more numerology calculations added."
+                "Our users love the detailed planetary transit reports. The only reason I didn't give 5 stars is that I'd love to see more detailed yogas and planetary combinations in the reports."
               </p>
             </div>
           </div>
@@ -880,9 +954,9 @@ export default function VedicAstrologyPage() {
       <section className="py-20 bg-gradient-to-br from-purple-50 to-indigo-50">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-extrabold mb-4">Powerful Use Cases</h2>
+            <h2 className="text-4xl font-extrabold mb-4">Powerful Vedic Astrology Use Cases</h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Discover how AstroSetuAPI can enhance your application
+              Discover how our API can enhance your application
             </p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -892,9 +966,9 @@ export default function VedicAstrologyPage() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
                 </svg>
               </div>
-              <h3 className="text-xl font-bold mb-3">Mobile Apps</h3>
+              <h3 className="text-xl font-bold mb-3">Matrimonial Apps</h3>
               <p className="text-gray-700">
-                Add daily horoscope features to your lifestyle or dating app to increase user engagement and retention.
+                Integrate Kundali matching with Ashtakoot and Dashakoot systems to provide compatibility scores and detailed marriage reports for your users.
               </p>
             </div>
             <div className="bg-white p-6 rounded-xl shadow-md border border-gray-200">
@@ -903,9 +977,9 @@ export default function VedicAstrologyPage() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
                 </svg>
               </div>
-              <h3 className="text-xl font-bold mb-3">News Portals</h3>
+              <h3 className="text-xl font-bold mb-3">Astrology Platforms</h3>
               <p className="text-gray-700">
-                Keep visitors coming back with daily updated zodiac predictions alongside your regular content.
+                Generate detailed Kundali reports with planetary positions, divisional charts, yogas, and Dasha periods for your astrology service.
               </p>
             </div>
             <div className="bg-white p-6 rounded-xl shadow-md border border-gray-200">
@@ -914,9 +988,9 @@ export default function VedicAstrologyPage() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
                 </svg>
               </div>
-              <h3 className="text-xl font-bold mb-3">Dating Platforms</h3>
+              <h3 className="text-xl font-bold mb-3">Event Planning</h3>
               <p className="text-gray-700">
-                Offer zodiac compatibility insights to help users find better matches and increase interaction.
+                Use Panchang API to suggest auspicious dates for weddings, business launches, and other important events based on planetary positions.
               </p>
             </div>
             <div className="bg-white p-6 rounded-xl shadow-md border border-gray-200">
@@ -927,7 +1001,7 @@ export default function VedicAstrologyPage() {
               </div>
               <h3 className="text-xl font-bold mb-3">Wellness Apps</h3>
               <p className="text-gray-700">
-                Combine astrology with health recommendations for a holistic approach to wellbeing.
+                Combine Vedic astrology with health recommendations for a holistic approach to wellbeing based on planetary influences.
               </p>
             </div>
             <div className="bg-white p-6 rounded-xl shadow-md border border-gray-200">
@@ -936,9 +1010,9 @@ export default function VedicAstrologyPage() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
                 </svg>
               </div>
-              <h3 className="text-xl font-bold mb-3">Event Planning</h3>
+              <h3 className="text-xl font-bold mb-3">Calendar Apps</h3>
               <p className="text-gray-700">
-                Use Panchang data to suggest auspicious dates for weddings, business launches, and other important events.
+                Show Hindu festival dates, auspicious muhurtas, and inauspicious periods (Rahu Kalam) in your calendar application.
               </p>
             </div>
             <div className="bg-white p-6 rounded-xl shadow-md border border-gray-200">
@@ -949,7 +1023,7 @@ export default function VedicAstrologyPage() {
               </div>
               <h3 className="text-xl font-bold mb-3">Content Platforms</h3>
               <p className="text-gray-700">
-                Generate personalized astrology content at scale for blogs, social media, and newsletters.
+                Generate personalized Vedic astrology content at scale for blogs, social media, and newsletters based on user birth details.
               </p>
             </div>
           </div>
@@ -961,7 +1035,7 @@ export default function VedicAstrologyPage() {
         <div className="text-center mb-16">
           <h2 className="text-4xl font-extrabold mb-4">Frequently Asked Questions</h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Everything you need to know about AstroSetuAPI
+            Everything you need to know about our Vedic Astrology API
           </p>
         </div>
         <div className="space-y-4">
@@ -1000,15 +1074,15 @@ export default function VedicAstrologyPage() {
       {/* CTA Section */}
       <section className="bg-gradient-to-r from-purple-600 to-indigo-600 text-white py-20">
         <div className="max-w-4xl mx-auto px-6 text-center">
-          <h2 className="text-4xl font-extrabold mb-6">Ready to Integrate Astrology into Your App?</h2>
+          <h2 className="text-4xl font-extrabold mb-6">Ready to Integrate Vedic Astrology?</h2>
           <p className="text-xl text-purple-100 mb-8">
-            Join thousands of developers using AstroSetuAPI to deliver engaging astrology content to their users.
+            Join thousands of developers using our API to deliver authentic Vedic astrology insights to their users.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <Link to="/pricing" className="inline-block bg-white hover:bg-gray-100 text-purple-700 font-semibold px-8 py-4 rounded-lg shadow-lg transition transform hover:-translate-y-1">
               Get Started for Free
             </Link>
-            <Link ti="#demo" className="inline-block bg-transparent hover:bg-purple-700 text-white font-semibold px-8 py-4 rounded-lg border-2 border-white transition transform hover:-translate-y-1">
+            <Link to="#demo" className="inline-block bg-transparent hover:bg-purple-700 text-white font-semibold px-8 py-4 rounded-lg border-2 border-white transition transform hover:-translate-y-1">
               Try Live Demo
             </Link>
           </div>
