@@ -67,3 +67,10 @@
   font-size: 14px;
   color: #555;
 }
+
+.plan-card .cta-btn.disabled {
+  pointer-events: none;
+}
+.cart-summary {
+  border-top: 4px solid #4f46e5;
+}
