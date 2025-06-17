@@ -206,6 +206,10 @@ export default function AstroLandingPage() {
             <div className="text-3xl mb-2">🐉</div>
             <h3 className="font-bold">Chinese Zodiac</h3>
           </div>
+           <div className="bg-white p-4 rounded-xl shadow-md border border-gray-100">
+            <div className="text-3xl mb-2">🐉</div>
+            <h3 className="font-bold">Vedic Zodiac</h3>
+          </div>
           <div className="bg-white p-4 rounded-xl shadow-md border border-gray-100">
             <div className="text-3xl mb-2">🔢</div>
             <h3 className="font-bold">Numeroscope</h3>
@@ -271,6 +275,34 @@ export default function AstroLandingPage() {
                 <span className="text-2xl">🐉</span>
               </div>
               <h3 className="text-2xl font-bold mb-4">Chinese Zodiac API</h3>
+              <p className="text-gray-700 mb-4">
+                Access detailed Chinese zodiac predictions based on birth year, including personality traits, compatibility, and yearly forecasts.
+              </p>
+              <ul className="space-y-2 text-gray-600">
+                <li className="flex items-start">
+                  <svg className="w-4 h-4 text-purple-500 mr-2 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path>
+                  </svg>
+                  <span>12 animal signs</span>
+                </li>
+                <li className="flex items-start">
+                  <svg className="w-4 h-4 text-purple-500 mr-2 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path>
+                  </svg>
+                  <span>Five elements theory</span>
+                </li>
+                <li className="flex items-start">
+                  <svg className="w-4 h-4 text-purple-500 mr-2 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path>
+                  </svg>
+                  <span>Yearly fortune predictions</span>
+                </li>
+              </ul>
+            </div><div className="bg-gradient-to-b from-purple-50 to-white p-8 rounded-xl border border-purple-100 shadow-sm">
+            <div className="w-14 h-14 bg-purple-100 rounded-lg flex items-center justify-center mb-6">
+                <span className="text-2xl">🐉</span>
+              </div>
+              <h3 className="text-2xl font-bold mb-4">Vedic Zodiac API</h3>
               <p className="text-gray-700 mb-4">
                 Access detailed Chinese zodiac predictions based on birth year, including personality traits, compatibility, and yearly forecasts.
               </p>
